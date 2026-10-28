@@ -211,7 +211,7 @@
     if(path.split('/').some(part=>!part || part==='.' || part==='..' || /[\\\u0000-\u001f]/.test(part)))return null;
     return new URL(encodedPath(path),document.baseURI).href;
   }
-  function textName(file) {return (file.extension==='txt'?file.path:file.textPath).split('/').pop();}
+  function textName(file) {return file.extension==='txt'?file.name:file.name.replace(/\.[^.]+$/,'.txt');}
   const imageExtensions=['png','jpg','jpeg','gif','webp','avif','bmp','svg'];
   const officeExtensions=['doc','docx','xls','xlsx','ppt','pptx'];
   function originalUrl(file) {
@@ -388,7 +388,7 @@
     if(!preserveMatch)state.activeMatch=state.matches.findIndex(match=>match.fileIndex>=start && match.fileIndex<end);
     for(let i=start;i<end;i++)fragment.append(row(state.filtered[i],i+1));$('file-rows').replaceChildren(fragment);
     const folder=folders.find(f=>f.key===state.folder);$('view-title').textContent=folder.label;
-    $('view-description').textContent=state.folder==='all'?'PDFs, images, documents, spreadsheets and presentations.':`Files / ${folder.key}`;
+    $('view-description').textContent=state.folder==='all'?'PDF and text files.':`Files / ${folder.key}`;
     $('total-pill').textContent=`${files.length} ${files.length===1?'file':'files'}`;
     $('result-summary').textContent=!($('filter-rows')?.checked ?? true) && state.hasSearch ? `${n} ${n===1?'file':'files'} shown · ${state.matchedRows} matching ${state.matchedRows===1?'file':'files'}` : n===files.length?`${n} ${n===1?'file':'files'} in the catalogue`:`${n} of ${files.length} files match`;
     const count=advancedCount();$('filter-count').hidden=!count;$('filter-count').textContent=count;
@@ -529,7 +529,7 @@
     if(tree.truncated)throw Error('incomplete listing');
     const existing=new Map(files.map(f=>[f.path,f]));
     const refreshed=tree.tree.filter(f=>f.type==='blob' && /\.(pdf|txt)$/i.test(f.path)).map(f=>existing.get(f.path)||{path:f.path,name:f.path.split('/').pop(),extension:f.path.split('.').pop().toLowerCase(),folder:/\.pdf$/i.test(f.path)?'pdf':'text',remarks:'',size:f.size});
-    files.splice(0,files.length,...refreshed);folderNavigation();render();
+    for(const f of refreshed){if(f.extension==='pdf' && !f.textPath){const stem=f.name.replace(/\.pdf$/i,'').normalize('NFC');const matches=refreshed.filter(t=>t.extension==='txt' && t.name.replace(/\.txt$/i,'').normalize('NFC')===stem);if(matches.length===1)f.textPath=matches[0].path;}}files.splice(0,files.length,...refreshed);folderNavigation();render();
   }).catch(()=>{ $('updated-at').textContent+=' · Saved catalogue shown; refresh later to check for new uploads.'; });
 })();
 
