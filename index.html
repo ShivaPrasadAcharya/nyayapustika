@@ -67,14 +67,11 @@
 .access-card .noscript{font-size:.875rem;margin-top:18px}
 @media(max-width:480px){.access-screen{padding:20px 16px}.access-card{padding:28px 24px}.access-brand{padding-bottom:24px;margin-bottom:24px}.access-form h2{font-size:1.125rem}}
 
-.access-clock{display:flex;align-items:center;gap:20px;padding:16px;background:#f7f9fd;border:1px solid var(--line);border-radius:12px;margin:0 0 26px}
+.access-clock{display:flex;align-items:center;justify-content:center;padding:16px;background:#f7f9fd;border:1px solid var(--line);border-radius:12px;margin:0 0 26px}
 .access-clock>svg{width:104px;height:104px;flex-shrink:0;fill:none}
-.access-clock-label,.access-clock p{font-size:.75rem;color:var(--muted)}
-#access-clock-time{display:block;font-size:2rem;font-weight:700;letter-spacing:.08em;font-variant-numeric:tabular-nums;line-height:1.4}
-.access-demo-note{font-size:.75rem;color:var(--muted);line-height:1.6;margin-top:24px;text-align:center}
 .catalogue-counts{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:1100px){.catalogue-counts{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:400px){.access-clock{padding:12px;gap:14px}.access-clock>svg{width:82px;height:82px}#access-clock-time{font-size:1.7rem}}
+@media(max-width:400px){.access-clock{padding:12px;gap:14px}.access-clock>svg{width:82px;height:82px}}
 </style></head>
 <body>
 
@@ -82,7 +79,7 @@
     <div class="access-card">
       <div class="brand access-brand"><span class="brand-mark"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H4V4Zm9 3a3 3 0 0 1 3-3h5v15h-4a4 4 0 0 0-4 2"/></svg></span><div><h1>Nyayapustika</h1><p>File catalogue</p></div></div>
       <div class="access-clock">
-        <svg id="access-clock-face" role="img" aria-label="Nepal time" viewBox="0 0 120 120">
+        <svg id="access-clock-face" role="img" aria-label="Analog clock" viewBox="0 0 120 120">
           <circle cx="60" cy="60" r="55" fill="#fff" stroke="#d7e1f2" stroke-width="2"/>
           <g stroke="#94a3b8" stroke-width="2"><path d="M60 9v7M111 60h-7M60 111v-7M9 60h7"/><path d="M85.5 15.8l-3 5.2M104.2 34.5l-5.2 3M104.2 85.5l-5.2-3M85.5 104.2l-3-5.2M34.5 104.2l3-5.2M15.8 85.5l5.2-3M15.8 34.5l5.2 3M34.5 15.8l3 5.2"/></g>
           <line id="access-hour-hand" x1="60" y1="60" x2="60" y2="32" stroke="#182843" stroke-width="4" stroke-linecap="round"/>
@@ -90,7 +87,6 @@
           <line id="access-second-hand" x1="60" y1="66" x2="60" y2="18" stroke="#b85742" stroke-width="1.5"/>
           <circle cx="60" cy="60" r="4" fill="#2459d3"/>
         </svg>
-        <div><span class="access-clock-label">Nepal time · 24-hour clock</span><time id="access-clock-time">--:--</time><p>Verification code = HHMM</p></div>
       </div>
       <form id="access-mobile-step" class="access-form" novalidate>
         <h2>Mobile verification</h2><p>Enter your registered mobile number to continue.</p>
@@ -98,13 +94,12 @@
         <button class="button primary" type="submit">Continue</button>
       </form>
       <form id="access-code-step" class="access-form" novalidate hidden>
-        <h2>Enter the clock code</h2><p>Use the four digits shown by the clock above, without the colon. The code changes every minute.</p>
-        <label for="access-code">Verification code (HHMM)</label><input id="access-code" class="access-code" type="text" inputmode="numeric" autocomplete="off" maxlength="4" pattern="[0-9]{4}" placeholder="HHMM" required aria-describedby="access-message">
+        <h2>Enter verification code</h2>
+        <label for="access-code">Verification code</label><input id="access-code" class="access-code" type="text" inputmode="numeric" autocomplete="off" maxlength="4" pattern="[0-9]{4}" required aria-describedby="access-message">
         <button class="button primary" type="submit">Verify and open</button><button id="access-change-number" class="text-button" type="button">Change mobile number</button>
       </form>
       <p id="access-message" class="access-message" role="alert" hidden></p>
-      <p class="access-demo-note">Clock-based demo verification. No SMS is sent.</p>
-      <noscript><p class="noscript">Enable JavaScript to use the clock verification and catalogue.</p></noscript>
+      <noscript><p class="noscript">Enable JavaScript to continue.</p></noscript>
     </div>
   </section>
   <div id="catalogue-app" hidden inert>
@@ -650,9 +645,6 @@
   }
   function updateClock() {
     const time = clockParts();
-    const display = time.hour + ':' + time.minute;
-    $('access-clock-time').textContent = display;
-    $('access-clock-face').setAttribute('aria-label', 'Nepal time ' + display);
     $('access-hour-hand').setAttribute('transform', 'rotate(' + ((Number(time.hour) % 12) * 30 + Number(time.minute) / 2) + ' 60 60)');
     $('access-minute-hand').setAttribute('transform', 'rotate(' + Number(time.minute) * 6 + ' 60 60)');
     $('access-second-hand').setAttribute('transform', 'rotate(' + Number(time.second) * 6 + ' 60 60)');
@@ -773,7 +765,7 @@
     event.preventDefault();
     if (!numberAccepted) { mobileStep(); $('access-mobile').focus(); return; }
     if (!/^[0-9]{4}$/.test($('access-code').value) || $('access-code').value !== updateClock()) {
-      message('Enter the current four clock digits (HHMM), without the colon. The code changes every minute.');
+      message('Incorrect verification code. Please try again.');
       $('access-code').setAttribute('aria-invalid', 'true');
       $('access-code').focus();
       return;
@@ -813,6 +805,7 @@
 
 </script></body>
 </html>
+
 
 
 
