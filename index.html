@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2459d3">
+  <meta name="description" content="Browse, search, open and download files from Nyayapustika.">
+  <title>Nyayapustika · File catalogue</title>
+<style>:root{color-scheme:light;--ink:#182843;--muted:#65748a;--blue:#2459d3;--line:#e1e7f0;--bg:#f4f6fa;--radius:12px;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Devanagari",Arial,sans-serif;font-size:16px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.5}button,input,select{font:inherit}button,a,select,input{touch-action:manipulation}button,select{cursor:pointer}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}button{color:inherit}svg{width:20px;height:20px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}svg use{pointer-events:none}.icon-defs{position:absolute;width:0;height:0;overflow:hidden}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}:focus-visible{outline:3px solid #6d9cf5;outline-offset:3px}.skip-link{position:absolute;top:-80px;left:20px;z-index:20;background:white;padding:12px}.skip-link:focus{top:12px}.header{height:104px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 40px;gap:20px}.brand{display:flex;align-items:center;gap:14px}.brand-mark{height:48px;width:48px;border-radius:12px;background:var(--blue);color:white;display:grid;place-items:center}.brand-mark svg{width:28px;height:28px}h1,h2,h3,p{margin:0}.brand h1{font-size:1.6rem;letter-spacing:-.6px;font-weight:720;line-height:1.3}.brand p{font-size:.875rem;color:var(--muted);margin-top:2px}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;border:1px solid transparent;border-radius:8px;padding:9px 15px;font-size:.875rem;font-weight:600;white-space:nowrap;text-decoration:none}.button:hover{text-decoration:none}.primary{background:var(--blue);color:white;box-shadow:0 3px 8px #2459d321}.primary:hover{background:#194ab8}.secondary{background:white;border-color:var(--line)}.secondary:hover{background:#f3f6fc;border-color:#c9d4e7}.workspace{max-width:1680px;margin:auto;display:grid;grid-template-columns:242px minmax(0,1fr);min-height:calc(100vh - 104px)}.sidebar{padding:35px 22px;border-right:1px solid var(--line);background:#fafbfe}.section-label{font-size:.75rem;font-weight:750;color:#7a869a;letter-spacing:1.5px;margin:0 14px 14px}.folder-list{display:flex;flex-direction:column;gap:5px}.folder-button{display:flex;align-items:center;width:100%;gap:11px;border:0;background:transparent;padding:12px 13px;border-radius:9px;text-align:left;font-size:.9rem;font-weight:550;min-height:48px}.folder-button:hover{background:#edf1f8}.folder-button.active{background:#e6edfd;color:#1e50c3}.folder-button .folder-count{margin-left:auto;font-size:.75rem;font-variant-numeric:tabular-nums;min-width:23px;text-align:center;color:#7b889b}.folder-button.active .folder-count{color:#2459d3}.folder-note{display:flex;gap:10px;border-top:1px solid var(--line);padding:20px 10px;margin-top:28px;color:#7a8799;font-size:.8125rem;line-height:1.6}.folder-note svg{width:17px;height:17px;margin-top:3px}main{min-width:0;padding:34px 36px 28px}.heading-row{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:25px}.heading-row h2{font-size:1.5rem;font-weight:700;letter-spacing:-.45px}.heading-row p{font-size:.875rem;color:var(--muted);margin-top:6px}.total-pill{background:white;border:1px solid var(--line);font-size:.8125rem;font-weight:600;padding:5px 12px;border-radius:100px;white-space:nowrap}.search-card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:16px}.search-row{display:flex;gap:12px;align-items:center}.search-box{position:relative;display:flex;align-items:center;flex:1;min-width:0}.search-box>svg{position:absolute;left:14px;color:#8190a4}.search-box input{width:100%;height:46px;padding:10px 45px 10px 44px;border:1px solid var(--line);background:#f9fafd;border-radius:8px;font-size:.9375rem;color:var(--ink)}input::placeholder{color:#8a95a5;opacity:1}input:focus,select:focus{border-color:#6d9cf5}kbd{position:absolute;right:15px;border:1px solid #d9e1ee;background:white;border-radius:4px;color:#8a95a5;font-family:inherit;font-size:.75rem;padding:0 6px;pointer-events:none}.advanced{border-top:1px solid var(--line);padding-top:20px;margin-top:16px}.advanced-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.advanced-grid label{display:flex;flex-direction:column;gap:7px;font-size:.875rem;font-weight:550}.advanced-grid input,.advanced-grid select{height:42px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:white;color:var(--ink);min-width:0;font-size:.875rem}.advanced-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:18px}.check-label{display:flex;align-items:center;gap:8px;font-size:.875rem}.check-label input{width:17px;height:17px;accent-color:var(--blue)}.search-help{font-size:.8125rem;color:var(--muted);margin-top:15px}.text-button{background:transparent;border:0;padding:4px 0;color:var(--blue);font-size:.875rem;font-weight:550}.text-button:hover{text-decoration:underline}.filter-count{font-size:.75rem;background:var(--blue);color:white;padding:1px 6px;border-radius:20px}.results-toolbar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:23px 2px 14px}.results-toolbar p{font-size:.875rem;color:var(--muted)}.results-controls{display:flex;align-items:center;gap:18px}.results-controls select{border:0;background:transparent;font-size:.8125rem;color:#536279;padding:4px 22px 4px 4px;max-width:190px}.table-card{background:white;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 3px #18284303}table{width:100%;border-collapse:collapse;table-layout:fixed;text-align:left}.col-sn{width:6%}.col-folder{width:15%}.col-name{width:29%}.col-link{width:27%}.col-remarks{width:23%}th{background:#f9fafd;color:#68758b;font-size:.8125rem;font-weight:650;border-bottom:1px solid var(--line);padding:15px 16px;white-space:nowrap}th button{font:inherit;display:inline-flex;align-items:center;gap:7px;padding:0;border:0;background:none}th svg{width:13px;height:13px;opacity:.6}td{border-bottom:1px solid #edf0f6;padding:18px 16px;vertical-align:middle;font-size:.875rem;overflow-wrap:anywhere}tbody tr:last-child td{border-bottom:0}tbody tr:hover{background:#fcfdff}.sn{color:#8a95a7;font-variant-numeric:tabular-nums;font-size:.8125rem}.folder-tag{display:inline-flex;align-items:center;gap:7px;font-size:.8125rem;background:#f2f5fb;border:1px solid #e5eaf3;border-radius:5px;padding:3px 7px;color:#53657e}.folder-tag svg{width:14px;height:14px}.file-name{display:flex;align-items:flex-start;gap:10px}.type-icon{width:33px;min-width:33px;height:38px;border:1px solid currentColor;border-radius:5px;display:flex;align-items:center;justify-content:center;background:#f7f9fd;color:#557091;font-size:.625rem;font-weight:750;line-height:1}.type-icon.pdf{color:#c95a60;background:#fff5f5}.type-icon.images{color:#8561c4;background:#f8f5ff}.type-icon.docs{color:#3268bd;background:#f1f6ff}.type-icon.spreadsheet{color:#23826d;background:#f1faf6}.type-icon.powerpoints{color:#c57837;background:#fff7ef}.file-title{font-weight:550;color:#233653;font-size:.9375rem;line-height:1.5}.file-meta{display:block;font-size:.75rem;color:#8893a4;margin-top:2px}.file-links{display:flex;flex-wrap:wrap;gap:8px 16px}.file-links a{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;font-weight:550;line-height:1.6}.file-links svg{width:16px;height:16px}.download-link{color:#5e718e}.remarks{color:#68758b;white-space:pre-wrap}.no-remark{color:#b0b9c7}.empty-state{text-align:center;padding:65px 20px 70px}.empty-icon{display:grid;place-items:center;width:64px;height:64px;border:1px solid #e2e8f2;border-radius:16px;background:#f7f9fd;color:#94a4bc;margin:0 auto 20px}.empty-icon svg{width:29px;height:29px}.empty-state h3{font-size:1.0625rem;font-weight:650}.empty-state p{font-size:.875rem;color:var(--muted);max-width:420px;margin:8px auto 0;line-height:1.7}.empty-state .button{margin-top:20px}.table-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 20px;border-top:1px solid var(--line);font-size:.8125rem;color:var(--muted)}.pagination{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pagination label{font-size:.75rem}.pagination select{font-size:.8125rem;border:1px solid var(--line);border-radius:5px;padding:4px;background:white;color:var(--ink)}.page-button{font-size:.75rem;min-height:32px;padding:5px 10px;border-color:var(--line);background:white;font-weight:550}.page-button:disabled{opacity:.45;cursor:default}.catalogue-footer{display:flex;justify-content:space-between;gap:20px;margin:16px 2px;font-size:.75rem;color:#8a95a6}.noscript{padding:16px;background:#fff1c4;border-radius:8px}dialog{width:min(1120px,94vw);height:min(830px,90vh);border:1px solid var(--line);padding:0;border-radius:14px;color:var(--ink);box-shadow:0 24px 90px #152c5350}dialog::backdrop{background:#101e39a6;backdrop-filter:blur(3px)}.preview-header{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid var(--line);padding:14px 20px;background:white}.preview-header h2{font-size:1rem;overflow-wrap:anywhere}.preview-header p{font-size:.8125rem;color:var(--muted);margin-top:3px}.preview-actions{display:flex;gap:8px;flex-shrink:0}#preview-content{height:calc(100% - 82px);min-height:200px;display:flex;align-items:center;justify-content:center;background:#f1f3f8}#preview-content iframe{width:100%;height:100%;border:0}#preview-content img{max-width:100%;max-height:100%;object-fit:contain;padding:12px}.preview-fallback{padding:35px;text-align:center}.preview-fallback p{margin-bottom:18px;color:var(--muted)}
+@media(min-width:1500px){main{padding-left:44px;padding-right:44px}.file-links{gap:12px 18px}}
+@media(max-width:1160px){.workspace{grid-template-columns:207px minmax(0,1fr)}.sidebar{padding:30px 12px}main{padding:30px 24px}.header{padding:0 28px}td,th{padding:15px 12px}.col-link{width:24%}.col-remarks{width:22%}.col-name{width:31%}.col-folder{width:17%}.file-links{flex-direction:column;gap:7px}.folder-tag svg{display:none}.type-icon{width:28px;min-width:28px;height:33px}.file-name{gap:8px}}
+@media(max-width:900px){.workspace{display:block}.sidebar{border-right:0;border-bottom:1px solid var(--line);padding:16px 24px;background:white}.section-label,.folder-note{display:none}.folder-list{flex-direction:row;flex-wrap:wrap;gap:6px}.folder-button{width:auto;min-height:38px;padding:8px 11px;font-size:.8125rem;border:1px solid var(--line);gap:7px}.folder-button svg{width:16px;height:16px}.folder-button.active{border-color:#bfceef}.folder-count{display:none}main{padding:26px 24px}.header{height:88px}.brand h1{font-size:1.4rem}.advanced-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.header{padding:0 18px;height:86px}.brand{gap:10px}.brand-mark{width:40px;height:40px;border-radius:10px}.brand-mark svg{width:25px;height:25px}.brand h1{font-size:1.25rem}.header .button{font-size:.8125rem;padding:8px 10px}.sidebar{padding:14px 16px}.folder-button{padding:7px 8px;gap:5px;font-size:.75rem;min-height:34px}.folder-button svg{display:none}main{padding:23px 16px}.heading-row{align-items:flex-start;margin-bottom:20px;gap:14px}.heading-row h2{font-size:1.3rem}.heading-row p{font-size:.8125rem;max-width:270px}.total-pill{font-size:.75rem}.search-card{padding:12px}.search-row{flex-wrap:wrap;gap:10px}.search-box{flex-basis:100%}.search-box input{font-size:.875rem;padding-right:12px}kbd{display:none}#advanced-toggle{min-height:34px;font-size:.8125rem;padding:6px 10px}.advanced-grid{grid-template-columns:1fr}.advanced-bottom{align-items:flex-start;flex-direction:column;gap:12px}.results-toolbar{gap:12px;align-items:flex-start;padding-top:20px}.results-controls{align-items:flex-end;flex-direction:column;gap:3px}.results-toolbar p{font-size:.8125rem}.results-controls select{font-size:.75rem;max-width:155px}.table-card{background:transparent;border:0;border-radius:0;box-shadow:none}table,tbody{display:block}colgroup,thead{display:none}tr{position:relative;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);background:white;border-radius:10px;margin-bottom:12px;padding:17px 16px}td{display:block;border:0;padding:0;min-width:0}td.sn{position:absolute;top:18px;right:16px}td.sn::before{content:"SN "}td.folder-cell{grid-column:1/3;margin:0 50px 14px 0}td.name-cell{grid-column:1/3;margin-bottom:17px}.type-icon{width:34px;min-width:34px;height:40px}.file-title{font-size:1rem}.file-meta{font-size:.75rem}.file-links{flex-direction:row;gap:13px}.link-cell{grid-column:1/3;border-top:1px solid #edf0f6;padding-top:13px}.remarks-cell{grid-column:1/3;margin-top:14px;font-size:.8125rem}.remarks-cell::before{content:"Remarks";display:block;font-size:.75rem;color:#8b96a7;margin-bottom:4px}.empty-state{border:1px solid var(--line);border-radius:12px;background:white;padding:50px 18px}.table-footer{background:white;flex-direction:column;gap:13px;border:1px solid var(--line);border-radius:8px;padding:14px}.pagination{justify-content:center;gap:8px}.catalogue-footer{flex-direction:column;gap:5px}.preview-header{padding:12px;align-items:flex-start}.preview-actions .button{padding:8px;min-height:36px}.preview-actions #preview-download{font-size:0;gap:0}.preview-actions #preview-download svg{font-size:initial}dialog{height:90vh;width:96vw}.preview-header h2{font-size:.875rem}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+.search-card{position:sticky;top:12px;z-index:15;max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);overflow-y:auto;box-shadow:0 5px 18px #18284308}
+.search-row{position:sticky;top:0;z-index:1;background:white}
+.search-box{border:1px solid var(--line);background:#f9fafd;border-radius:8px}
+.search-box:focus-within{border-color:#6d9cf5}
+.search-box input{flex:1;min-width:0;border:0;background:transparent;padding-right:10px}
+.search-box kbd{position:static;margin-right:8px;flex-shrink:0}
+.search-matches{display:flex;align-items:center;gap:2px;flex-shrink:0;border-left:1px solid var(--line);padding:0 5px;height:32px}
+#match-count{min-width:46px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.search-matches button{display:grid;place-items:center;width:28px;height:30px;border:0;border-radius:5px;background:transparent;color:var(--blue)}
+.search-matches button:hover{background:#e6edfd}.search-matches button:disabled{opacity:.35;cursor:default}.search-matches button svg{width:17px;height:17px}#match-next svg{transform:rotate(180deg)}
+.search-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-bottom:20px}
+.search-option .check-label{cursor:pointer}.search-option input{flex-shrink:0}
+.search-option p{font-size:.75rem;color:var(--muted);line-height:1.5;margin:5px 0 0 25px}
+.search-match{background:#fff0a8;color:inherit;border-radius:2px;padding:0;font:inherit}
+.search-match-active{background:#ffd56b;outline:2px solid #bc7b09;outline-offset:1px}
+.active-search-row{outline:2px solid #97b6ef;outline-offset:-2px}
+@media(max-width:620px){.search-options{grid-template-columns:1fr}.search-matches{padding:0 3px}.search-matches button{width:26px}#match-count{min-width:42px;font-size:.6875rem}}
+.go-top{position:fixed;right:24px;bottom:max(24px,env(safe-area-inset-bottom));z-index:18;width:46px;height:46px;display:grid;place-items:center;background:var(--blue);color:white;border:1px solid #ffffff80;border-radius:50%;box-shadow:0 5px 18px #18284333;cursor:pointer}
+.go-top:hover{background:#194ab8}.go-top svg{width:22px;height:22px}
+#preview-shell{height:100%;display:flex;flex-direction:column;background:white}
+#preview.preview-expanded,#preview-shell:fullscreen{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;border:0;border-radius:0}
+#preview-shell .preview-header{flex-shrink:0}
+/* Originals and uploaded UTF-8 text share the existing preview window. */
+.file-links .text-unavailable{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;font-weight:550;line-height:1.6;color:var(--muted);opacity:.65;cursor:not-allowed}
+.preview-header{flex-wrap:wrap}
+.preview-header>div:first-child{flex:1 1 260px}
+.preview-actions{flex-wrap:wrap;justify-content:flex-end;max-width:100%}
+.preview-actions [aria-pressed="true"]{background:#e6edfd;border-color:#b6cbf5;color:#1e50c3}
+#preview-content.text-preview{align-items:stretch;justify-content:flex-start;background:white;overflow:hidden}
+.preview-text{width:100%;height:100%;margin:0;padding:28px 32px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:4;font:1rem/1.9 "Noto Sans Devanagari","Segoe UI",Arial,sans-serif;color:var(--ink);user-select:text}
+@media(max-width:620px){.preview-actions{justify-content:flex-start}.preview-text{padding:20px 16px;font-size:.9375rem}.preview-actions #preview-download{font-size:.8125rem;gap:6px}}
+#preview-shell #preview-content{flex:1;min-height:0;height:auto}
+.preview-header>div:first-child{min-width:0}
+@media(max-width:620px){.search-card{top:8px;max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px)}.go-top{right:16px;bottom:max(16px,env(safe-area-inset-bottom));width:44px;height:44px}.preview-actions #preview-fullscreen span{display:none}.preview-actions #preview-fullscreen{gap:0}}
+
+
+
+.go-bottom{bottom:24px}.go-bottom svg{transform:rotate(180deg)}#go-top{bottom:80px}.pdf-notice{padding:12px 16px;background:#edf4ff;color:#193865;display:flex;gap:12px;align-items:center;flex-wrap:wrap}#preview-content:has(.pdf-notice){display:flex;flex-direction:column}#preview-content iframe{flex:1;min-height:60vh}.workspace{max-width:1600px;margin:auto}</style></head>
+<body>
+
+  <div id="catalogue-app">
+  <a class="skip-link" href="#catalogue">Skip to files</a>
+  <svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H4V4Zm9 3a3 3 0 0 1 3-3h5v15h-4a4 4 0 0 0-4 2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7V5h6l2 2h10v13H3V7Z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6V3Z M14 3v5h4 M9 12h6 M9 16h6"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 6-6 4 4 3-3 5 5"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18 M3 15h18 M9 3v18 M15 3v18"/></symbol>
+    <symbol id="i-slides" viewBox="0 0 24 24"><path d="M3 4h18 M4 4v13h16V4 M12 17v4 M8 21h8 M8 8h8 M8 12h5"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12 M7 10l5 5 5-5 M4 16v5h16v-5"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16 M4 12h16 M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="9" cy="18" r="2"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14 M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12 M18 6 6 18"/></symbol>
+    <symbol id="i-sort" viewBox="0 0 24 24"><path d="m8 8 4-4 4 4 M12 4v16 m-4-4 4 4 4-4"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 20V4 M5 11l7-7 7 7"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5 M16 3h5v5 M3 16v5h5 M21 16v5h-5"/></symbol>
+    <symbol id="i-collapse" viewBox="0 0 24 24"><path d="M3 8h5V3 M21 8h-5V3 M8 21v-5H3 M16 21v-5h5"/></symbol>
+  </defs></svg>
+  <header class="header">
+    <div class="brand"><span class="brand-mark"><svg><use href="#i-book"/></svg></span><div><h1>Nyayapustika</h1><p>File catalogue</p></div></div>
+    <a id="add-files" class="button primary" href="https://github.com/ShivaPrasadAcharya/nyayapustika/upload/main" target="_blank" rel="noopener noreferrer"><svg><use href="#i-plus"/></svg>Add files</a>
+  </header>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="Filter by folder">
+      <div class="section-label">FOLDERS</div>
+      <nav id="folders" class="folder-list"></nav>
+      <div class="folder-note"><svg><use href="#i-folder"/></svg><span>Browse PDFs and text files.</span></div>
+    </aside>
+    <main id="catalogue">
+      <div class="heading-row"><div><h2 id="view-title">All files</h2><p id="view-description">PDF and text files.</p></div><span id="total-pill" class="total-pill">0 files</span></div>
+      <section class="search-card" aria-label="Search and filters">
+        <div class="search-row"><div class="search-box"><svg><use href="#i-search"/></svg><label class="sr-only" for="search">Search files</label><input id="search" type="search" placeholder="Search file names, folders or remarks…" autocomplete="off"><kbd>/</kbd><div class="search-matches" role="group" aria-label="Search match navigation"><span id="match-count" role="status" aria-live="polite" aria-label="No search matches">0 / 0</span><button id="match-previous" type="button" aria-label="Previous search match" title="Previous match (Shift+Enter)" disabled><svg aria-hidden="true"><use href="#i-up"/></svg></button><button id="match-next" type="button" aria-label="Next search match" title="Next match (Enter)" disabled><svg aria-hidden="true"><use href="#i-up"/></svg></button></div></div><button id="advanced-toggle" class="button secondary" aria-expanded="false" aria-controls="advanced"><svg><use href="#i-filter"/></svg>Advanced search<span id="filter-count" class="filter-count" hidden>0</span></button></div>
+        <div id="advanced" class="advanced" hidden>
+          <div class="search-options"><div class="search-option"><label class="check-label"><input id="nepali-normalized" type="checkbox" checked aria-describedby="normalization-help"><span>Nepali normalized search</span></label><p id="normalization-help">Match equivalent Nepali letters and numerals; ignore spaces.</p></div><div class="search-option"><label class="check-label"><input id="filter-rows" type="checkbox" checked aria-describedby="filter-rows-help"><span>Filter matching rows</span></label><p id="filter-rows-help">Uncheck to keep all rows in the selected view and highlight matching text.</p></div></div>
+          <div class="advanced-grid">
+            <label>Search matching<select id="match-mode"><option value="all">All words</option><option value="any">Any word</option><option value="phrase">Exact phrase</option></select></label>
+            <label>Search in<select id="search-field"><option value="all">All fields</option><option value="name">File name</option><option value="folder">Folder name</option><option value="remarks">Remarks</option></select></label>
+            <label>File type<select id="extension"><option value="">Any file type</option></select></label>
+            <label>File name contains<input id="name-filter" placeholder="e.g. judgement" autocomplete="off"></label>
+            <label>Remarks contains<input id="remarks-filter" placeholder="e.g. evidence law" autocomplete="off"></label>
+            <label>Exclude words<input id="exclude-filter" placeholder="e.g. draft, old" autocomplete="off"></label>
+          </div>
+          <div class="advanced-bottom"><label class="check-label"><input id="has-remarks" type="checkbox">Only files with remarks</label><button id="reset-advanced" class="text-button">Reset advanced filters</button></div>
+          <p class="search-help">Search covers the catalogue’s names and remarks. It does not search inside file contents. Use the arrows beside the search box, or Enter / Shift+Enter, to move through matches.</p>
+        </div>
+      </section>
+      <div class="results-toolbar"><p id="result-summary" role="status" aria-live="polite">Loading catalogue…</p><div class="results-controls"><button id="clear-all" class="text-button" hidden>Clear filters</button><label for="sort" class="sr-only">Sort files</label><select id="sort"><option value="name-asc">File name: A–Z</option><option value="name-desc">File name: Z–A</option><option value="folder-asc">Folder: A–Z</option></select></div></div>
+      <section class="table-card" aria-label="File catalogue">
+        <table><colgroup><col class="col-sn"><col class="col-folder"><col class="col-name"><col class="col-link"><col class="col-remarks"></colgroup><thead><tr><th scope="col">SN</th><th scope="col"><button id="sort-folder">Folder name<svg><use href="#i-sort"/></svg></button></th><th scope="col"><button id="sort-name">File name<svg><use href="#i-sort"/></svg></button></th><th scope="col">Link</th><th scope="col">Remarks</th></tr></thead><tbody id="file-rows"></tbody></table>
+        <div id="empty-state" class="empty-state" hidden><span class="empty-icon"><svg><use href="#i-folder"/></svg></span><h3 id="empty-title">No files added yet</h3><p id="empty-description">Add your files to the folders to start your catalogue.</p><button id="empty-reset" class="button secondary" hidden>Clear filters</button></div>
+        <footer class="table-footer"><span id="page-summary">0 files</span><div class="pagination"><label for="page-size">Rows per page</label><select id="page-size"><option>25</option><option>50</option><option selected>100</option></select><button id="previous" class="button page-button" disabled>Previous</button><button id="next" class="button page-button" disabled>Next</button></div></footer>
+      </section>
+      <div class="catalogue-footer"><span id="updated-at"></span><span>Open to view · Download to save</span></div>
+      <noscript><p class="noscript">Enable JavaScript to browse and search this catalogue. You can also access the files through the GitHub repository.</p></noscript>
+    </main>
+  </div>
+  <button id="go-top" class="go-top" type="button" aria-label="Go to top" title="Go to top" hidden><svg aria-hidden="true"><use href="#i-up"/></svg></button>
+  <button id="go-bottom" class="go-top go-bottom" type="button" aria-label="Go to bottom" title="Go to bottom"><svg aria-hidden="true"><use href="#i-up"/></svg></button>
+  <dialog id="preview"><div id="preview-shell"><div class="preview-header"><div><h2 id="preview-title"></h2><p id="preview-note"></p></div><div class="preview-actions"><button id="preview-original" class="button secondary" type="button" aria-pressed="true" hidden>Open PDF</button><button id="preview-txt" class="button secondary" type="button" aria-pressed="false" hidden>Open TXT</button><button id="preview-copy" class="button secondary" type="button" hidden>Copy text</button><button id="preview-fullscreen" class="button secondary" type="button" aria-label="Enter fullscreen" aria-pressed="false" title="Enter fullscreen"><svg aria-hidden="true"><use href="#i-expand"/></svg><span>Full screen</span></button><a id="preview-download" class="button secondary" download><svg><use href="#i-download"/></svg>Download</a><button id="preview-close" class="button secondary" aria-label="Close preview"><svg><use href="#i-close"/></svg></button></div></div><div id="preview-content"></div></div></dialog>
+  </div>
+<script>window.RAYA_INDEX={"files": [{"path": "file-35070e16381aaf9b.pdf", "name": "20830602_एकपक्षले_सहि_नगर्दैमा_डोर_मुचुल्का_वदर_नहुने.pdf", "extension": "pdf", "folder": "pdf", "size": 237709, "remarks": "", "textPath": "file-35070e16381aaf9b.txt"}, {"path": "file-35070e16381aaf9b.txt", "name": "20830602_एकपक्षले_सहि_नगर्दैमा_डोर_मुचुल्का_वदर_नहुने.txt", "extension": "txt", "folder": "text", "size": 2538, "remarks": ""}, {"path": "file-71d0f443f13f7712.pdf", "name": "20830602_किस्तामा_रकम_बुझाउने_समय_प्रदान.pdf", "extension": "pdf", "folder": "pdf", "size": 259171, "remarks": "", "textPath": "file-71d0f443f13f7712.txt"}, {"path": "file-71d0f443f13f7712.txt", "name": "20830602_किस्तामा_रकम_बुझाउने_समय_प्रदान.txt", "extension": "txt", "folder": "text", "size": 1916, "remarks": ""}, {"path": "file-db96cd668d34f3cc.pdf", "name": "20830602_कैद_वापत_थुनामा_जगतश्रीमान.pdf", "extension": "pdf", "folder": "pdf", "size": 1186091, "remarks": "", "textPath": "file-db96cd668d34f3cc.txt"}, {"path": "file-db96cd668d34f3cc.txt", "name": "20830602_कैद_वापत_थुनामा_जगतश्रीमान.txt", "extension": "txt", "folder": "text", "size": 6786, "remarks": ""}, {"path": "file-04f59a1cc7a96234.pdf", "name": "20830602_कैदहद_गर्न_नमिल्ने.pdf", "extension": "pdf", "folder": "pdf", "size": 632287, "remarks": "", "textPath": "file-04f59a1cc7a96234.txt"}, {"path": "file-04f59a1cc7a96234.txt", "name": "20830602_कैदहद_गर्न_नमिल्ने.txt", "extension": "txt", "folder": "text", "size": 7199, "remarks": ""}, {"path": "file-caa49802ccdd7715.pdf", "name": "20830602_गोलमोटल_निवेदन_उपर_न्यायिकटिप्पणी_ईश्वरपराजुली.pdf", "extension": "pdf", "folder": "pdf", "size": 367658, "remarks": "", "textPath": "file-caa49802ccdd7715.txt"}, {"path": "file-caa49802ccdd7715.txt", "name": "20830602_गोलमोटल_निवेदन_उपर_न्यायिकटिप्पणी_ईश्वरपराजुली.txt", "extension": "txt", "folder": "text", "size": 2873, "remarks": ""}, {"path": "file-0c0e2ba597d61030.pdf", "name": "20830602_चेक_प्रतिवादीको_खाताबाट_जारीनभएको_उपर_बैंकसँग_एकीनजवाफमाग.pdf", "extension": "pdf", "folder": "pdf", "size": 227100, "remarks": "", "textPath": "file-0c0e2ba597d61030.txt"}, {"path": "file-0c0e2ba597d61030.txt", "name": "20830602_चेक_प्रतिवादीको_खाताबाट_जारीनभएको_उपर_बैंकसँग_एकीनजवाफमाग.txt", "extension": "txt", "folder": "text", "size": 1757, "remarks": ""}, {"path": "file-43f72e542ba2134a.pdf", "name": "20830602_चेकअनादररोक्का.pdf", "extension": "pdf", "folder": "pdf", "size": 261284, "remarks": "", "textPath": "file-43f72e542ba2134a.txt"}, {"path": "file-43f72e542ba2134a.txt", "name": "20830602_चेकअनादररोक्का.txt", "extension": "txt", "folder": "text", "size": 3000, "remarks": ""}, {"path": "file-8bd1ece9eaa37628.pdf", "name": "20830602_ज्येष्ठ_नागरिक_कैदछुट_शिवप्रसाआचार्य.pdf", "extension": "pdf", "folder": "pdf", "size": 900254, "remarks": "", "textPath": "file-8bd1ece9eaa37628.txt"}, {"path": "file-8bd1ece9eaa37628.txt", "name": "20830602_ज्येष्ठ_नागरिक_कैदछुट_शिवप्रसाआचार्य.txt", "extension": "txt", "folder": "text", "size": 13185, "remarks": ""}, {"path": "file-658abc4a904ad812.pdf", "name": "20830602_डोर_मुचुल्का_बदर_नहुने.pdf", "extension": "pdf", "folder": "pdf", "size": 232157, "remarks": "", "textPath": "file-658abc4a904ad812.txt"}, {"path": "file-658abc4a904ad812.txt", "name": "20830602_डोर_मुचुल्का_बदर_नहुने.txt", "extension": "txt", "folder": "text", "size": 2943, "remarks": ""}, {"path": "file-60259cd694f151c6.pdf", "name": "20830602_तहसिलदारको_पुनरोक्का_आदेश_बदरनहुने.pdf", "extension": "pdf", "folder": "pdf", "size": 220655, "remarks": "", "textPath": "file-60259cd694f151c6.txt"}, {"path": "file-60259cd694f151c6.txt", "name": "20830602_तहसिलदारको_पुनरोक्का_आदेश_बदरनहुने.txt", "extension": "txt", "folder": "text", "size": 2535, "remarks": ""}, {"path": "file-d8fc6ca3aa016818.pdf", "name": "20830602_तहसिलदारकोदरपीठआदेशबदर.pdf", "extension": "pdf", "folder": "pdf", "size": 279031, "remarks": "", "textPath": "file-d8fc6ca3aa016818.txt"}, {"path": "file-d8fc6ca3aa016818.txt", "name": "20830602_तहसिलदारकोदरपीठआदेशबदर.txt", "extension": "txt", "folder": "text", "size": 4214, "remarks": ""}, {"path": "file-53ce03ecc9025e2f.pdf", "name": "20830602_पेन्सन_बाहेकका_अन्य_आयस्रोत_खुलाउनु_मानाचामल.pdf", "extension": "pdf", "folder": "pdf", "size": 199963, "remarks": "", "textPath": "file-53ce03ecc9025e2f.txt"}, {"path": "file-53ce03ecc9025e2f.txt", "name": "20830602_पेन्सन_बाहेकका_अन्य_आयस्रोत_खुलाउनु_मानाचामल.txt", "extension": "txt", "folder": "text", "size": 1476, "remarks": ""}, {"path": "file-b3b54593a70cff7b.pdf", "name": "20830602_बिगो_वापत_थुनामाराख्न_पक्राउपूर्जी_जारीगर्नू.pdf", "extension": "pdf", "folder": "pdf", "size": 45377, "remarks": "", "textPath": "file-b3b54593a70cff7b.txt"}, {"path": "file-b3b54593a70cff7b.txt", "name": "20830602_बिगो_वापत_थुनामाराख्न_पक्राउपूर्जी_जारीगर्नू.txt", "extension": "txt", "folder": "text", "size": 3532, "remarks": ""}, {"path": "file-e2d4d4373006ad7b.pdf", "name": "20830602_विगो_बुझाए_पक्राउपूर्जी_रद्द_गरिदिनु.pdf", "extension": "pdf", "folder": "pdf", "size": 231008, "remarks": "", "textPath": "file-e2d4d4373006ad7b.txt"}, {"path": "file-e2d4d4373006ad7b.txt", "name": "20830602_विगो_बुझाए_पक्राउपूर्जी_रद्द_गरिदिनु.txt", "extension": "txt", "folder": "text", "size": 2696, "remarks": ""}, {"path": "file-2271399591668aa0.pdf", "name": "20830602_विवाहप्रमाणपत्र_संशोधन.pdf", "extension": "pdf", "folder": "pdf", "size": 288437, "remarks": "", "textPath": "file-2271399591668aa0.txt"}, {"path": "file-2271399591668aa0.txt", "name": "20830602_विवाहप्रमाणपत्र_संशोधन.txt", "extension": "txt", "folder": "text", "size": 3637, "remarks": ""}, {"path": "file-15e3fa3dddbbeb2a.pdf", "name": "20830602_शर्तसहितअदालतीशुल्ककोसुविधा_अञ्जनसापकोटा.pdf", "extension": "pdf", "folder": "pdf", "size": 311338, "remarks": "", "textPath": "file-15e3fa3dddbbeb2a.txt"}, {"path": "file-15e3fa3dddbbeb2a.txt", "name": "20830602_शर्तसहितअदालतीशुल्ककोसुविधा_अञ्जनसापकोटा.txt", "extension": "txt", "folder": "text", "size": 2807, "remarks": ""}, {"path": "file-beafda5102b9d28e.pdf", "name": "20830602_१५५नम्बरकोसुविधा.pdf", "extension": "pdf", "folder": "pdf", "size": 590022, "remarks": "", "textPath": "file-beafda5102b9d28e.txt"}, {"path": "file-beafda5102b9d28e.txt", "name": "20830602_१५५नम्बरकोसुविधा.txt", "extension": "txt", "folder": "text", "size": 6690, "remarks": ""}, {"path": "file-367b62037106d5bf.pdf", "name": "20830613_अआछलफल_विपक्षीलेजानकारीनपाएको_सुनुवाईगर्नमिलेन_अन्जनराजसापकोटाश्रीमान.pdf", "extension": "pdf", "folder": "pdf", "size": 274837, "remarks": "", "textPath": "file-367b62037106d5bf.txt"}, {"path": "file-367b62037106d5bf.txt", "name": "20830613_अआछलफल_विपक्षीलेजानकारीनपाएको_सुनुवाईगर्नमिलेन_अन्जनराजसापकोटाश्रीमान.txt", "extension": "txt", "folder": "text", "size": 2303, "remarks": ""}, {"path": "file-36c0cc813e72e69e.pdf", "name": "20830613_कैद_हद_गर्न_कैद_नै_वाँकी_नरहेको_शिवप्रसादआचार्य.pdf", "extension": "pdf", "folder": "pdf", "size": 915550, "remarks": "", "textPath": "file-36c0cc813e72e69e.txt"}, {"path": "file-36c0cc813e72e69e.txt", "name": "20830613_कैद_हद_गर्न_कैद_नै_वाँकी_नरहेको_शिवप्रसादआचार्य.txt", "extension": "txt", "folder": "text", "size": 6897, "remarks": ""}, {"path": "file-6fd7d47e25ef0638.pdf", "name": "20830613_प्रारम्भिक सुनुवाइ_खारेज नहुने_लगाउका केहीमा मात्र_कमलकान्तश्रीमान.pdf", "extension": "pdf", "folder": "pdf", "size": 268403, "remarks": "", "textPath": "file-6fd7d47e25ef0638.txt"}, {"path": "file-6fd7d47e25ef0638.txt", "name": "20830613_प्रारम्भिक सुनुवाइ_खारेज नहुने_लगाउका केहीमा मात्र_कमलकान्तश्रीमान.txt", "extension": "txt", "folder": "text", "size": 2133, "remarks": ""}, {"path": "file-8c85a987a0ccca3f.pdf", "name": "20830615_अंशको_लागि_बैंक_खाताको_रकम_रोक्का_राख्नू.pdf", "extension": "pdf", "folder": "pdf", "size": 536244, "remarks": "", "textPath": "file-8c85a987a0ccca3f.txt"}, {"path": "file-8c85a987a0ccca3f.txt", "name": "20830615_अंशको_लागि_बैंक_खाताको_रकम_रोक्का_राख्नू.txt", "extension": "txt", "folder": "text", "size": 4989, "remarks": ""}, {"path": "file-95c7f230f9bdecc6.pdf", "name": "20830615_अदालती_आदेशको_टाइप_त्रुटि_सच्याइदिएकोछ(देवानी).pdf", "extension": "pdf", "folder": "pdf", "size": 278155, "remarks": "", "textPath": "file-95c7f230f9bdecc6.txt"}, {"path": "file-95c7f230f9bdecc6.txt", "name": "20830615_अदालती_आदेशको_टाइप_त्रुटि_सच्याइदिएकोछ(देवानी).txt", "extension": "txt", "folder": "text", "size": 2533, "remarks": ""}, {"path": "file-29e58efebc6c4f53.pdf", "name": "20830615_कर्जा_फाइल_झिकाउने.pdf", "extension": "pdf", "folder": "pdf", "size": 179848, "remarks": "", "textPath": "file-29e58efebc6c4f53.txt"}, {"path": "file-29e58efebc6c4f53.txt", "name": "20830615_कर्जा_फाइल_झिकाउने.txt", "extension": "txt", "folder": "text", "size": 1125, "remarks": ""}, {"path": "file-48257fd6cce6add0.pdf", "name": "20830615_कारण_देखाउ_आदेश_र_अआ_छलफलमा_झिकाउनू.pdf", "extension": "pdf", "folder": "pdf", "size": 311357, "remarks": "", "textPath": "file-48257fd6cce6add0.txt"}, {"path": "file-48257fd6cce6add0.txt", "name": "20830615_कारण_देखाउ_आदेश_र_अआ_छलफलमा_झिकाउनू.txt", "extension": "txt", "folder": "text", "size": 3712, "remarks": ""}, {"path": "file-178dca7ee88298ab.pdf", "name": "20830615_परीक्षण_प्रतिवेदन_झिकाई_साथै_राख्नू.pdf", "extension": "pdf", "folder": "pdf", "size": 32718, "remarks": "", "textPath": "file-178dca7ee88298ab.txt"}, {"path": "file-178dca7ee88298ab.txt", "name": "20830615_परीक्षण_प्रतिवेदन_झिकाई_साथै_राख्नू.txt", "extension": "txt", "folder": "text", "size": 1989, "remarks": ""}, {"path": "file-fcd47dc902262fa1.pdf", "name": "20830615_पेट_बोलिको_मानिस_बुझ्ने (अंश).pdf", "extension": "pdf", "folder": "pdf", "size": 235610, "remarks": "", "textPath": "file-fcd47dc902262fa1.txt"}, {"path": "file-fcd47dc902262fa1.txt", "name": "20830615_पेट_बोलिको_मानिस_बुझ्ने (अंश).txt", "extension": "txt", "folder": "text", "size": 1814, "remarks": ""}, {"path": "file-a4ddb7253a354761.pdf", "name": "20830615_प्रारम्भिक_सुनुवाई_लागि_पेश_गर्नू.pdf", "extension": "pdf", "folder": "pdf", "size": 218633, "remarks": "", "textPath": "file-a4ddb7253a354761.txt"}, {"path": "file-a4ddb7253a354761.txt", "name": "20830615_प्रारम्भिक_सुनुवाई_लागि_पेश_गर्नू.txt", "extension": "txt", "folder": "text", "size": 1411, "remarks": ""}, {"path": "file-412383b2f6608ad5.pdf", "name": "20830615_प्रारम्भिक_सुनुवाईको_लागि_अर्को_हप्ताको‌_पेशी_तोक्नू.pdf", "extension": "pdf", "folder": "pdf", "size": 265197, "remarks": "", "textPath": "file-412383b2f6608ad5.txt"}, {"path": "file-412383b2f6608ad5.txt", "name": "20830615_प्रारम्भिक_सुनुवाईको_लागि_अर्को_हप्ताको‌_पेशी_तोक्नू.txt", "extension": "txt", "folder": "text", "size": 1645, "remarks": ""}, {"path": "file-55fb4abe135b2699.pdf", "name": "20830615_प्रारम्भिक_सुनुवाईमा_नै_खारेज_गर्न_मिलेन_प्रमाण_मुकरर_पेशी_तोक्नू.pdf", "extension": "pdf", "folder": "pdf", "size": 208322, "remarks": "", "textPath": "file-55fb4abe135b2699.txt"}, {"path": "file-55fb4abe135b2699.txt", "name": "20830615_प्रारम्भिक_सुनुवाईमा_नै_खारेज_गर्न_मिलेन_प्रमाण_मुकरर_पेशी_तोक्नू.txt", "extension": "txt", "folder": "text", "size": 2473, "remarks": ""}, {"path": "file-4a4d4303b2f62a25.pdf", "name": "20830615_बेपत्ते_म्याद_बदर_राष्ट्रिय_पत्रिकामा_इतलायनामा_म्याद_जारी_गर्नू.pdf", "extension": "pdf", "folder": "pdf", "size": 288000, "remarks": "", "textPath": "file-4a4d4303b2f62a25.txt"}, {"path": "file-4a4d4303b2f62a25.txt", "name": "20830615_बेपत्ते_म्याद_बदर_राष्ट्रिय_पत्रिकामा_इतलायनामा_म्याद_जारी_गर्नू.txt", "extension": "txt", "folder": "text", "size": 2950, "remarks": ""}, {"path": "file-756a42074456c236.pdf", "name": "20830615_म्यादमा_साक्षी_र_रोहवरमा_कोही_नराखेको_हुँदा_म्याद_बदर(प्रतिवादी_स्वयंले_बुझेको_म्याद_बदर).pdf", "extension": "pdf", "folder": "pdf", "size": 262645, "remarks": "", "textPath": "file-756a42074456c236.txt"}, {"path": "file-756a42074456c236.txt", "name": "20830615_म्यादमा_साक्षी_र_रोहवरमा_कोही_नराखेको_हुँदा_म्याद_बदर(प्रतिवादी_स्वयंले_बुझेको_म्याद_बदर).txt", "extension": "txt", "folder": "text", "size": 1804, "remarks": ""}, {"path": "file-4cf09aa43c2604ce.pdf", "name": "20830615_रोक्का_हुने.pdf", "extension": "pdf", "folder": "pdf", "size": 463554, "remarks": "", "textPath": "file-4cf09aa43c2604ce.txt"}, {"path": "file-4cf09aa43c2604ce.txt", "name": "20830615_रोक्का_हुने.txt", "extension": "txt", "folder": "text", "size": 3193, "remarks": ""}, {"path": "file-0d9a48c3ec8d3cb5.pdf", "name": "20830615_रोक्काको_लागि_नाता_र_भाग_कागज_गराई_खुलाउन_लगाउने.pdf", "extension": "pdf", "folder": "pdf", "size": 229925, "remarks": "", "textPath": "file-0d9a48c3ec8d3cb5.txt"}, {"path": "file-0d9a48c3ec8d3cb5.txt", "name": "20830615_रोक्काको_लागि_नाता_र_भाग_कागज_गराई_खुलाउन_लगाउने.txt", "extension": "txt", "folder": "text", "size": 1668, "remarks": ""}, {"path": "file-c0dfdd1f21d54b8a.pdf", "name": "20830615_लगाउमा_राखी_सबै_मुद्दा_प्रारम्भिक_सुनुवाइको_लागि_पेश_गर्नू.pdf", "extension": "pdf", "folder": "pdf", "size": 179556, "remarks": "", "textPath": "file-c0dfdd1f21d54b8a.txt"}, {"path": "file-c0dfdd1f21d54b8a.txt", "name": "20830615_लगाउमा_राखी_सबै_मुद्दा_प्रारम्भिक_सुनुवाइको_लागि_पेश_गर्नू.txt", "extension": "txt", "folder": "text", "size": 1532, "remarks": ""}, {"path": "file-ae8a6c2ca2d5371e.pdf", "name": "20830615_हेलो_साक्षी_कार्यक्रम_मार्फत_सम्पर्क_गरी_साक्षी‌_उपस्थित_गराउनू.pdf", "extension": "pdf", "folder": "pdf", "size": 216829, "remarks": "", "textPath": "file-ae8a6c2ca2d5371e.txt"}, {"path": "file-ae8a6c2ca2d5371e.txt", "name": "20830615_हेलो_साक्षी_कार्यक्रम_मार्फत_सम्पर्क_गरी_साक्षी‌_उपस्थित_गराउनू.txt", "extension": "txt", "folder": "text", "size": 1896, "remarks": ""}, {"path": "file-c101298c97fbcb08.pdf", "name": "20830709_kyc_को_वतनमा_म्याद_तामेल_गर्नू (1).pdf", "extension": "pdf", "folder": "pdf", "size": 39600, "remarks": "", "textPath": "file-c101298c97fbcb08.txt"}, {"path": "file-c101298c97fbcb08.txt", "name": "20830709_kyc_को_वतनमा_म्याद_तामेल_गर्नू (1).txt", "extension": "txt", "folder": "text", "size": 2786, "remarks": ""}, {"path": "file-be051d67f022fe93.pdf", "name": "20830709_के_प्रयोजनको_लागि_प्रमाण_पेश_भएको_हो_कागज_गराई_खुलाउन_लगाउनू.pdf", "extension": "pdf", "folder": "pdf", "size": 45306, "remarks": ""}, {"path": "file-5d035449b47b125e.pdf", "name": "20830709_तमसुकको प्रतिक्रिया कागज गराउनू(लेनदेन).pdf", "extension": "pdf", "folder": "pdf", "size": 33623, "remarks": ""}, {"path": "file-ecdb70086e8c6cda.pdf", "name": "20830709_पेशीको_जानकारी_दिएको_नदेखिंदा_सरकारी‌_वकील_कार्यालयलाई_पेशीको_जानकारी_दिनू.pdf", "extension": "pdf", "folder": "pdf", "size": 30177, "remarks": ""}, {"path": "file-8e3c4ce09a1afc50.pdf", "name": "20830709_प्रतिउत्तर_नपरेमा_प्रमाण_बुझ्ने_आदेशको_ढाँचा.pdf", "extension": "pdf", "folder": "pdf", "size": 23341, "remarks": ""}, {"path": "file-aa10d1dbdc2e1356.pdf", "name": "20830709_प्रतिउत्तरपत्रमा रकम बुझाएको भन्ने बेहोरा उल्लेख भएकोले सो सम्बन्धमा वादीको प्रतिकृया कागज गराउनू.pdf", "extension": "pdf", "folder": "pdf", "size": 47833, "remarks": ""}, {"path": "file-56be0a7ec59ab9cd.pdf", "name": "20830709_मेलमिलापमा पठाउने_वादीको अनुरोधमा_२१दिने.pdf", "extension": "pdf", "folder": "pdf", "size": 39497, "remarks": ""}, {"path": "file-c53a2473c62b60ab.pdf", "name": "kyc_को_वतनमा_म्याद_तामेल_गर्नू.pdf", "extension": "pdf", "folder": "pdf", "size": 39600, "remarks": ""}]};</script><script>/* Adeshpustika catalogue. All file names and remarks are rendered as text. */
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const folders = [{key:'all',label:'All files',icon:'folder'},{key:'pdf',label:'PDFs',icon:'file'},{key:'text',label:'Text files',icon:'file'}];
+  const folderKeys = new Set(folders.slice(1).map(f => f.key));
+  const data = window.RAYA_INDEX || {files:[], generatedAt:null};
+  const clean = value => String(value ?? '').normalize('NFKC').toLocaleLowerCase().replace(/\s+/g,' ').trim();
+  // Nepali character mappings supplied for optional, space-insensitive search.
+  const NepaliNormalizer = {
+    vowelMap: {'ी':'ि', 'ू':'ु', 'ृ':'ि', 'ऋ':'रि'},
+    sibilantMap: {'श':'स', 'ष':'स'},
+    nasalMap: {'ङ':'न', 'ण':'न', 'ञ':'न', 'ं':'न्'},
+    vaBaMap: {'व':'ब'},
+    numberMap: {'०':'0','१':'1','२':'2','३':'3','४':'4','५':'5','६':'6','७':'7','८':'8','९':'9'},
+    _isDropped(ch, ignoreSpaces) {
+      if (ch === '\u200D' || ch === '\u200C') return true;
+      if (ignoreSpaces && /\s/.test(ch)) return true;
+      return false;
+    },
+    _transformChar(ch) {
+      let s = ch;
+      for (const [f,t] of Object.entries(this.vowelMap)) if (s === f) s = t;
+      for (const [f,t] of Object.entries(this.sibilantMap)) if (s === f) s = t;
+      for (const [f,t] of Object.entries(this.nasalMap)) if (s === f) s = t;
+      for (const [f,t] of Object.entries(this.vaBaMap)) if (s === f) s = t;
+      for (const [f,t] of Object.entries(this.numberMap)) if (s === f) s = t;
+      return s;
+    },
+    normalize(text, opts = {}) {
+      if (!text) return '';
+      return this._normalizeWithMap(text, opts).text;
+    },
+    _normalizeWithMap(text, opts = {}) {
+      const ignoreSpaces = !!opts.ignoreSpaces;
+      const src = text.normalize('NFC');
+      let out = '';
+      const indexMap = [];
+      for (let i = 0; i < src.length; i++) {
+        const ch = src[i];
+        if (this._isDropped(ch, ignoreSpaces)) continue;
+        const mapped = this._transformChar(ch);
+        for (const outCh of mapped) {out += outCh; indexMap.push(i);}
+      }
+      return {text:out, indexMap};
+    },
+    isDevanagari(text) {return /[\u0900-\u097F]/.test(text);},
+    mapToOriginal(normPos, original, normalized, opts = {}) {
+      const {indexMap} = this._normalizeWithMap(original, opts);
+      if (normPos <= 0) return 0;
+      if (normPos >= indexMap.length) return original.length;
+      return indexMap[normPos];
+    },
+    search(query, text) {
+      if (!query || !text) return [];
+      const normQuery = this._normalizeWithMap(query, {ignoreSpaces:true}).text;
+      const {text:normText, indexMap} = this._normalizeWithMap(text, {ignoreSpaces:true});
+      if (!normQuery) return [];
+      const matches = [];
+      let fromIndex = 0;
+      while (fromIndex <= normText.length) {
+        const idx = normText.indexOf(normQuery, fromIndex);
+        if (idx === -1) break;
+        const startOrig = indexMap[idx];
+        const endOrig = indexMap[idx + normQuery.length - 1] + 1;
+        matches.push({start:startOrig, end:endOrig});
+        fromIndex = idx + 1;
+      }
+      return matches;
+    },
+    matches(query, text) {return this.search(query, text).length > 0;}
+  };
+  const collator = new Intl.Collator(undefined, {numeric:true, sensitivity:'base'});
+  const files = data.files.filter(f=>/\.(pdf|txt)$/i.test(f.path)).map(f=>({...f, remarks:f.remarks||''}));
+  const state = {folder:'all', page:1, filtered:[], matches:[], activeMatch:-1, matchRanges:new Map(), matchedRows:0, hasSearch:false};
+  const advancedIds = ['match-mode','search-field','extension','name-filter','remarks-filter','exclude-filter','has-remarks'];
+  const defaults = {'match-mode':'all','search-field':'all','extension':'','name-filter':'','remarks-filter':'','exclude-filter':'','has-remarks':false};
+  function icon(name) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('aria-hidden','true');
+    const use = document.createElementNS('http://www.w3.org/2000/svg','use');
+    use.setAttribute('href',`#i-${name}`); svg.append(use); return svg;
+  }
+  function element(tag, className, text) {
+    const e = document.createElement(tag); if (className) e.className = className;
+    if (text !== undefined) e.textContent = text; return e;
+  }
+  function encodedPath(path) { return path.split('/').map(encodeURIComponent).join('/'); }
+  function tokens(value) { return (clean(value).match(/"[^"]+"|[^\s,]+/g) || []).map(t => t.replace(/^"|"$/g,'')); }
+  function advancedCount() {return advancedIds.filter(id => ($(id).type === 'checkbox' ? $(id).checked : $(id).value) !== defaults[id]).length;}
+  function fileUrl(file) {return new URL(encodedPath(file.path), document.baseURI).href;}
+  function textUrl(file) {
+    const path=file.extension==='txt'?file.path:file.textPath;
+    if(typeof path!=='string' || !path.toLowerCase().endsWith('.txt'))return null;
+    if(path.split('/').some(part=>!part || part==='.' || part==='..' || /[\\\u0000-\u001f]/.test(part)))return null;
+    return new URL(encodedPath(path),document.baseURI).href;
+  }
+  function textName(file) {return (file.extension==='txt'?file.path:file.textPath).split('/').pop();}
+  const imageExtensions=['png','jpg','jpeg','gif','webp','avif','bmp','svg'];
+  const officeExtensions=['doc','docx','xls','xlsx','ppt','pptx'];
+  function originalUrl(file) {
+    return officeExtensions.includes(file.extension) && /^https?:/.test(location.protocol)
+      ? `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl(file))}` : fileUrl(file);
+  }
+  function bytes(n) { if (!Number.isFinite(n)) return ''; if (n < 1024) return `${n} B`; if (n < 1048576) return `${(n/1024).toFixed(1)} KB`; return `${(n/1048576).toFixed(1)} MB`; }
+  function folderNavigation() {
+    const nav = $('folders'); nav.replaceChildren();
+    for (const folder of folders) {
+      const count = folder.key === 'all' ? files.length : files.filter(f => f.folder === folder.key).length;
+      const b = element('button',`folder-button${folder.key===state.folder?' active':''}`);
+      b.type = 'button'; b.setAttribute('aria-pressed', String(folder.key===state.folder));
+      b.append(icon(folder.icon), element('span','',folder.label), element('span','folder-count',String(count)));
+      b.addEventListener('click', () => {state.folder=folder.key; state.page=1; folderNavigation(); render();});
+      nav.append(b);
+    }
+  }
+  const standardExtensions = ['pdf','txt'];
+  const extensions = [...new Set([...standardExtensions, ...files.map(f=>f.extension)])].sort();
+  for (const ext of extensions) {$('extension').append(new Option(ext.toUpperCase(), ext));}
+  const segmenter = typeof Intl.Segmenter === 'function' ? new Intl.Segmenter(undefined, {granularity:'grapheme'}) : null;
+  function searchableWithMap(value, normalized) {
+    const source=String(value ?? ''), parts=segmenter ? segmenter.segment(source) : Array.from(source).map((segment,index,array)=>({segment,index:array.slice(0,index).join('').length}));
+    let compatible='';const sourceMap=[];
+    for(const part of parts){const text=part.segment.normalize('NFKC'),range={start:part.index,end:part.index+part.segment.length};compatible+=text;for(let i=0;i<text.length;i++)sourceMap.push(range);}
+    // Fold the whole string so context-sensitive casing keeps its original behavior.
+    const lowered=compatible.toLocaleLowerCase(),lowerMap=[];let offset=0;
+    for(const ch of compatible){for(let i=0;i<ch.toLocaleLowerCase().length;i++)lowerMap.push(sourceMap[offset]);offset+=ch.length;}
+    let text='';const indexMap=[];
+    for(let i=0;i<lowered.length;i++){
+      const ch=lowered[i];if(normalized && NepaliNormalizer._isDropped(ch,true))continue;
+      if(!normalized && /\s/.test(ch) && (!text || text.endsWith(' ')))continue;
+      const mapped=normalized ? NepaliNormalizer._transformChar(ch) : /\s/.test(ch) ? ' ' : ch;
+      for(let j=0;j<mapped.length;j++){text+=mapped[j];indexMap.push(lowerMap[i] || lowerMap[lowerMap.length-1]);}
+    }
+    if(!normalized && text.endsWith(' ')){text=text.slice(0,-1);indexMap.pop();}
+    return {text,indexMap};
+  }
+  function rangesForTerms(value, terms, normalized) {
+    const {text,indexMap}=searchableWithMap(value,normalized),ranges=[];
+    for(const term of new Set(terms.filter(Boolean))){let from=0;while(from<=text.length){const at=text.indexOf(term,from);if(at<0)break;const first=indexMap[at],last=indexMap[at+term.length-1];if(first && last)ranges.push({start:first.start,end:last.end});from=at+term.length;}}
+    ranges.sort((a,b)=>a.start-b.start || a.end-b.end);const merged=[];
+    for(const range of ranges){const last=merged[merged.length-1];if(last && range.start<last.end)last.end=Math.max(last.end,range.end);else merged.push({...range});}
+    return merged;
+  }
+  function highlightedText(tag, className, text, ranges=[]) {
+    const container=element(tag,className);let end=0;
+    for(const range of ranges){container.append(document.createTextNode(text.slice(end,range.start)));const mark=element('mark','search-match',text.slice(range.start,range.end));mark.dataset.matchIndex=String(range.matchIndex);container.append(mark);end=range.end;}
+    container.append(document.createTextNode(text.slice(end)));return container;
+  }
+  function getFiltered() {
+    const normalized = $('nepali-normalized')?.checked ?? true;
+    const searchText = value => normalized ? NepaliNormalizer.normalize(clean(value), {ignoreSpaces:true}) : clean(value);
+    // Split words before removing spaces so All words and Any word keep their meaning.
+    const query = searchText($('search').value), queryTokens = tokens($('search').value).map(searchText).filter(Boolean), mode = $('match-mode').value;
+    const field = $('search-field').value, ext = $('extension').value;
+    const name = searchText($('name-filter').value), remarks = searchText($('remarks-filter').value), excluded = tokens($('exclude-filter').value).map(searchText).filter(Boolean);
+    const fullText=new Map();
+    const candidates = files.filter(file => {
+      if (state.folder !== 'all' && file.folder !== state.folder) return false;
+      if (ext && file.extension !== ext) return false;
+      if ($('has-remarks').checked && !file.remarks.trim()) return false;
+      const full = searchText(`${file.name} ${file.folder} ${folders.find(f=>f.key===file.folder).label} ${file.remarks}`);
+      fullText.set(file.path,full);
+      if (excluded.some(word=>full.includes(word))) return false;
+      return true;
+    });
+    const matchesFile=file=>{
+      if (name && !searchText(file.name).includes(name)) return false;
+      if (remarks && !searchText(file.remarks).includes(remarks)) return false;
+      const full=fullText.get(file.path);
+      const haystack = field === 'all' ? full : field === 'folder' ? searchText(`${file.folder} ${folders.find(f=>f.key===file.folder).label}`) : searchText(file[field]);
+      if (!query) return true;
+      if (mode === 'phrase') return haystack.includes(query.replace(/^"|"$/g,''));
+      return mode === 'any' ? queryTokens.some(word=>haystack.includes(word)) : queryTokens.every(word=>haystack.includes(word));
+    };
+    const matching=new Set(candidates.filter(matchesFile).map(file=>file.path));
+    const result=($('filter-rows')?.checked ?? true) ? candidates.filter(file=>matching.has(file.path)) : candidates;
+    const sort = $('sort').value;
+    result.sort((a,b) => {
+      if (sort === 'folder-asc') return collator.compare(a.folder,b.folder) || collator.compare(a.name,b.name);
+      return (sort === 'name-desc' ? -1 : 1) * collator.compare(a.name,b.name) || collator.compare(a.path,b.path);
+    });
+    state.hasSearch=!!(query || name || remarks);state.matches=[];state.matchRanges=new Map();state.matchedRows=state.hasSearch ? matching.size : 0;
+    if(state.hasSearch){
+      const queryTerms=mode==='phrase' ? [query.replace(/^"|"$/g,'')] : queryTokens;
+      for(let fileIndex=0;fileIndex<result.length;fileIndex++){
+        const file=result[fileIndex];if(!matching.has(file.path))continue;
+        const terms={folder:[],name:name?[name]:[],remarks:remarks?[remarks]:[]};
+        if(query){for(const key of ['folder','name','remarks'])if(field==='all' || field===key)terms[key].push(...queryTerms);}
+        const ranges={};let visibleMatches=0;
+        for(const key of ['folder','name','remarks']){
+          ranges[key]=rangesForTerms(file[key],terms[key],normalized);
+          for(const range of ranges[key]){range.matchIndex=state.matches.length;state.matches.push({fileIndex,path:file.path,field:key});visibleMatches++;}
+        }
+        // Folder aliases and phrases spanning fields can match a row without a visible substring.
+        if(!visibleMatches){ranges.rowMatchIndex=state.matches.length;state.matches.push({fileIndex,path:file.path,field:null});}
+        state.matchRanges.set(file.path,ranges);
+      }
+    }
+    return result;
+  }
+  function link(file, kind) {
+    const label = file.extension.toUpperCase() || 'file';
+    const a = element('a',kind === 'download' ? 'download-link' : 'open-link');
+    const text = kind === 'download' ? (file.downloadText || `Download ${label}`) : (file.openText || `Open ${label}`);
+    a.append(icon(kind === 'download' ? 'download' : 'eye'), element('span','',text));
+    a.href = fileUrl(file); a.setAttribute('aria-label',`${text}: ${file.name}`);
+    if (kind === 'download') {a.download=file.name; return a;}
+    a.target='_blank'; a.rel='noopener noreferrer';
+    if(file.extension==='txt'){
+      a.addEventListener('click',e=>{if(e.ctrlKey || e.metaKey || e.shiftKey || e.altKey)return;e.preventDefault();preview(file,'text');});
+    } else if (file.extension==='pdf' || imageExtensions.includes(file.extension)) {
+      a.addEventListener('click',e => {if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return; e.preventDefault(); preview(file);});
+    } else if (officeExtensions.includes(file.extension) && /^https?:/.test(location.protocol)) {
+      a.href = originalUrl(file);
+      a.title='Open with Microsoft Office web viewer';
+    } else {a.title='Open original file; your browser may download this format';}
+    return a;
+  }
+  function row(file, index) {
+    const tr = document.createElement('tr'),ranges=state.matchRanges.get(file.path) || {};
+    tr.dataset.filePath=file.path;if(ranges.rowMatchIndex!==undefined)tr.dataset.matchIndex=String(ranges.rowMatchIndex);
+    const sn = element('td','sn',String(index));
+    const folderCell = element('td','folder-cell');
+    const tag = element('span','folder-tag'); tag.append(icon('folder'),highlightedText('span','',file.folder,ranges.folder)); folderCell.append(tag);
+    const nameCell = element('td','name-cell'); const group = element('div','file-name');
+    const type = element('span',`type-icon ${file.folder}`, file.extension.toUpperCase().slice(0,5)); type.setAttribute('aria-hidden','true');
+    const titleGroup = element('div');titleGroup.append(highlightedText('span','file-title',file.name,ranges.name));
+    const nested = file.path.split('/').slice(2,-1).join('/');
+    titleGroup.append(element('span','file-meta',[bytes(file.size),nested].filter(Boolean).join(' · ')));
+    group.append(type,titleGroup);nameCell.append(group);
+    const linkCell=element('td','link-cell'),links=element('div','file-links');links.append(link(file,'open'));
+    if(file.extension!=='txt'){
+      const url=textUrl(file),textLink=element(url?'a':'span',url?'open-link':'open-link text-unavailable');
+      textLink.append(icon('file'),element('span','','Open TXT'));
+      if(url){
+        textLink.href=url;textLink.target='_blank';textLink.rel='noopener noreferrer';
+        textLink.setAttribute('aria-label',`Open TXT: ${file.name}`);
+        textLink.addEventListener('click',event=>{if(event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)return;event.preventDefault();preview(file,'text');});
+      } else {
+        textLink.title=file.textMatch==='ambiguous'?'Several TXT files have this name. Place the correct TXT beside this file.':'Upload a TXT with the same filename stem to enable Open TXT.';
+        textLink.setAttribute('role','link');textLink.setAttribute('aria-disabled','true');textLink.setAttribute('aria-label',`Open TXT unavailable: ${textLink.title}`);textLink.tabIndex=0;
+      }
+      links.append(textLink);
+    }
+    links.append(link(file,'download'));linkCell.append(links);
+    const remarksCell=element('td','remarks-cell');remarksCell.append(highlightedText('span', file.remarks?'remarks':'no-remark',file.remarks||'—',ranges.remarks));
+    tr.append(sn,folderCell,nameCell,linkCell,remarksCell);return tr;
+  }
+  function updateMatchNavigation() {
+    const total=state.matches.length,current=state.activeMatch>=0 ? state.activeMatch+1 : 0;
+    if($('match-count')){const label=total ? `${current ? `Match ${current} of ${total}` : `${total} matches`}, in ${state.matchedRows} matching ${state.matchedRows===1?'file':'files'}` : 'No search matches';$('match-count').textContent=`${current} / ${total}`;$('match-count').setAttribute('aria-label',label);$('match-count').title=label;}
+    if($('match-previous'))$('match-previous').disabled=!total;if($('match-next'))$('match-next').disabled=!total;
+    const active=$('file-rows').querySelector(`[data-match-index="${state.activeMatch}"]`);
+    if(active){if(active.tagName==='MARK'){active.classList.add('search-match-active');active.setAttribute('aria-current','true');}active.closest('tr').classList.add('active-search-row');}
+  }
+  function scrollToActiveMatch() {
+    const active=$('file-rows').querySelector(`[data-match-index="${state.activeMatch}"]`);if(!active)return;
+    const bar=document.querySelector('.search-card'),top=active.getBoundingClientRect().top+window.scrollY-(bar ? bar.getBoundingClientRect().height+24 : 80);
+    const reducedMotion=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:Math.max(0,top),behavior:reducedMotion?'auto':'smooth'});
+  }
+  function navigateMatch(direction) {
+    if(timer){clearTimeout(timer);timer=null;state.page=1;render();state.activeMatch=-1;}
+    const total=state.matches.length;if(!total)return;
+    state.activeMatch=state.activeMatch<0 ? direction>0 ? 0 : total-1 : (state.activeMatch+direction+total)%total;
+    state.page=Math.floor(state.matches[state.activeMatch].fileIndex/Number($('page-size').value))+1;render(true);scrollToActiveMatch();
+  }
+  function render(preserveMatch=false) {
+    state.filtered=getFiltered();const n=state.filtered.length,size=Number($('page-size').value),pages=Math.max(1,Math.ceil(n/size));state.page=Math.min(state.page,pages);
+    const start=(state.page-1)*size,end=Math.min(start+size,n),fragment=document.createDocumentFragment();
+    if(!preserveMatch)state.activeMatch=state.matches.findIndex(match=>match.fileIndex>=start && match.fileIndex<end);
+    for(let i=start;i<end;i++)fragment.append(row(state.filtered[i],i+1));$('file-rows').replaceChildren(fragment);
+    const folder=folders.find(f=>f.key===state.folder);$('view-title').textContent=folder.label;
+    $('view-description').textContent=state.folder==='all'?'PDFs, images, documents, spreadsheets and presentations.':`Files / ${folder.key}`;
+    $('total-pill').textContent=`${files.length} ${files.length===1?'file':'files'}`;
+    $('result-summary').textContent=!($('filter-rows')?.checked ?? true) && state.hasSearch ? `${n} ${n===1?'file':'files'} shown · ${state.matchedRows} matching ${state.matchedRows===1?'file':'files'}` : n===files.length?`${n} ${n===1?'file':'files'} in the catalogue`:`${n} of ${files.length} files match`;
+    const count=advancedCount();$('filter-count').hidden=!count;$('filter-count').textContent=count;
+    const filtered=!!($('search').value.trim()||count||state.folder!=='all');$('clear-all').hidden=!filtered;
+    $('empty-state').hidden=n>0;$('empty-reset').hidden=!files.length;
+    $('empty-title').textContent=files.length?'No matching files':'No files added yet';
+    $('empty-description').textContent=files.length?'Try a different search or clear your filters.':'Your catalogue is ready. Add files to the PDF, images, docs, spreadsheet or powerpoints folders.';
+    $('page-summary').textContent=n?`${start+1}–${end} of ${n} · Page ${state.page} of ${pages}`:'0 files';
+    $('previous').disabled=state.page<=1;$('next').disabled=state.page>=pages;
+    updateMatchNavigation();
+  }
+  function resetAdvanced() {for(const id of advancedIds){if($(id).type==='checkbox')$(id).checked=defaults[id];else $(id).value=defaults[id];}state.page=1;render();}
+  function resetAll() {$('search').value='';state.folder='all';resetAdvanced();folderNavigation();$('search').focus();}
+  function updateTopButton() {if($('go-top'))$('go-top').hidden=$('preview').open;if($('go-bottom'))$('go-bottom').hidden=$('preview').open;}
+  window.addEventListener('scroll',updateTopButton,{passive:true});
+  $('go-top')?.addEventListener('click',()=>{
+    const reducedMotion=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0,behavior:reducedMotion?'auto':'smooth'});
+  });
+  $('go-bottom').addEventListener('click',()=>window.scrollTo({top:document.documentElement.scrollHeight,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+  updateTopButton();
+  let nativePreviewFullscreen=false;
+  function previewIsFullscreen() {return !!$('preview-shell') && document.fullscreenElement===$('preview-shell');}
+  function setPreviewExpanded(expanded) {
+    if(!$('preview-fullscreen'))return;
+    $('preview').classList.toggle('preview-expanded',expanded);
+    const button=$('preview-fullscreen'),label=expanded?'Exit fullscreen':'Enter fullscreen';
+    button.setAttribute('aria-pressed',String(expanded));button.setAttribute('aria-label',label);button.title=label;
+    button.querySelector('use').setAttribute('href',expanded?'#i-collapse':'#i-expand');
+    button.querySelector('span').textContent=expanded?'Exit full screen':'Full screen';
+  }
+  $('preview-fullscreen')?.addEventListener('click',async()=>{
+    const dialog=$('preview'),shell=$('preview-shell'),button=$('preview-fullscreen');
+    if(!dialog.open)return;
+    button.disabled=true;
+    try {
+      if(dialog.classList.contains('preview-expanded')) {
+        if(document.fullscreenElement===shell && document.exitFullscreen)await document.exitFullscreen();
+        setPreviewExpanded(document.fullscreenElement===shell);
+      } else {
+        setPreviewExpanded(true);
+        // Keep a full-window view when the browser cannot enter native fullscreen.
+        if(shell.requestFullscreen && document.fullscreenEnabled) {
+          try {await shell.requestFullscreen();}catch {/* The full-window view remains available. */}
+        }
+        if(!dialog.open && document.fullscreenElement===shell && document.exitFullscreen)await document.exitFullscreen();
+        if(!dialog.open)setPreviewExpanded(false);
+      }
+    } catch {/* A browser-controlled fullscreen exit can be retried with Escape. */}
+    finally {button.disabled=false;}
+  });
+  document.addEventListener('fullscreenchange',()=>{
+    const active=previewIsFullscreen();
+    if(active || nativePreviewFullscreen)setPreviewExpanded(active);
+    nativePreviewFullscreen=active;
+  });
+  $('preview').addEventListener('cancel',event=>{
+    if(!$('preview').classList.contains('preview-expanded'))return;
+    event.preventDefault();
+    if(previewIsFullscreen() && document.exitFullscreen)document.exitFullscreen().catch(()=>{});
+    else setPreviewExpanded(false);
+  });
+  let activePreview=null,previewAbort=null,previewText='';
+  async function showPreviewMode(mode) {
+    const file=activePreview;if(!file)return;
+    previewAbort?.abort();previewAbort=null;previewText='';
+    const isText=mode==='text',hasText=file.extension!=='txt' && !!textUrl(file),content=$('preview-content');
+    content.replaceChildren();content.classList.toggle('text-preview',isText);
+    $('preview-original').hidden=!hasText;$('preview-txt').hidden=!hasText;$('preview-copy').hidden=!isText;$('preview-copy').disabled=true;
+    $('preview-original').textContent=`Open ${file.extension.toUpperCase()}`;
+    $('preview-copy').textContent='Copy text';
+    $('preview-original').setAttribute('aria-pressed',String(!isText));$('preview-txt').setAttribute('aria-pressed',String(isText));
+    $('preview-download').href=isText?textUrl(file):fileUrl(file);$('preview-download').download=isText?textName(file):file.name;
+    $('preview-download').lastChild.textContent=isText?'Download TXT':'Download';
+    $('preview-title').textContent=isText?textName(file):file.name;
+    if(isText){
+      $('preview-note').textContent=hasText?`Uploaded TXT · Original ${file.extension.toUpperCase()} available above.`:'Uploaded TXT';
+      const loading=element('p','preview-fallback','Loading text…');loading.setAttribute('role','status');content.append(loading);
+      const controller=new AbortController();previewAbort=controller;
+      try {
+        const response=await fetch(textUrl(file),{signal:controller.signal});if(!response.ok)throw new Error('Text unavailable');
+        const text=await response.text();if(controller.signal.aborted || activePreview!==file)return;
+        previewText=text;const pre=element('pre','preview-text',text);pre.tabIndex=0;pre.setAttribute('aria-label',`Text content: ${file.name}`);content.replaceChildren(pre);$('preview-copy').disabled=false;
+      } catch(error){
+        if(error.name==='AbortError' || controller.signal.aborted || activePreview!==file)return;
+        content.replaceChildren(element('p','preview-fallback','Text could not load. Retry Open TXT, use Download TXT, or open the original file.'));
+      }
+    } else if(file.extension==='pdf'){
+      $('preview-note').textContent='PDF preview · If a preview is unavailable, use Download.';
+      const notice=element('div','pdf-notice');notice.setAttribute('role','status');notice.append(element('span','','If this PDF appears blank or your browser cannot display it, open it in a new tab or download it. '));const direct=element('a','button secondary','Open PDF in new tab');direct.href=fileUrl(file);direct.target='_blank';direct.rel='noopener';notice.append(direct);content.append(notice);
+      const frame=document.createElement('iframe');frame.title=`PDF preview: ${file.name}`;frame.src=fileUrl(file);frame.addEventListener('error',()=>{notice.setAttribute('role','alert');notice.firstChild.textContent='The PDF preview could not load. Please open it in a new tab or use Download. ';});content.append(frame);
+      if(navigator.pdfViewerEnabled===false){notice.setAttribute('role','alert');notice.firstChild.textContent='Your browser does not support embedded PDF viewing. Open the PDF in a new tab or download it. ';}
+
+    } else if(imageExtensions.includes(file.extension)) {
+      $('preview-note').textContent='Image preview';
+      const img=document.createElement('img');img.alt=file.name;img.src=fileUrl(file);img.addEventListener('error',()=>{content.replaceChildren(element('p','preview-fallback','Preview unavailable. Use Download to save the file.'));},{once:true});content.append(img);
+    } else if(officeExtensions.includes(file.extension) && /^https?:/.test(location.protocol)) {
+      $('preview-note').textContent=`${file.extension.toUpperCase()} preview · If a preview is unavailable, use Download.`;
+      const frame=document.createElement('iframe');frame.title=`${file.extension.toUpperCase()} preview: ${file.name}`;frame.src=originalUrl(file);content.append(frame);
+    } else {
+      $('preview-note').textContent='Original file';
+      const fallback=element('div','preview-fallback');fallback.append(element('p','','Open or download the original file to view this format.'),link(file,'open'));content.append(fallback);
+    }
+  }
+  function preview(file,mode='original') {
+    const dialog=$('preview');activePreview=file;setPreviewExpanded(false);showPreviewMode(mode);
+    dialog.showModal();$('preview-close').focus();updateTopButton();
+  }
+  $('preview-original').addEventListener('click',()=>showPreviewMode('original'));
+  $('preview-txt').addEventListener('click',()=>showPreviewMode('text'));
+  $('preview-copy').addEventListener('click',async()=>{
+    const button=$('preview-copy'),file=activePreview,text=previewText;
+    try{await navigator.clipboard.writeText(text);if(activePreview===file && previewText===text){button.textContent='✓ Copied';setTimeout(()=>{if(activePreview===file && previewText===text)button.textContent='Copy text';},1800);}}
+    catch{if(activePreview===file && previewText===text)button.textContent='Select text to copy';}
+  });
+  $('preview-close').addEventListener('click',()=>$('preview').close());
+  $('preview').addEventListener('close',()=>{
+    previewAbort?.abort();previewAbort=null;activePreview=null;previewText='';
+    if(previewIsFullscreen() && document.exitFullscreen)document.exitFullscreen().catch(()=>{});
+    setPreviewExpanded(false);$('preview-content').replaceChildren();updateTopButton();
+  });
+  $('preview').addEventListener('click',e=>{if(e.target===$('preview')){const r=$('preview').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('preview').close();}});
+  $('advanced-toggle').addEventListener('click',()=>{const open=$('advanced').hidden;$('advanced').hidden=!open;$('advanced-toggle').setAttribute('aria-expanded',String(open));});
+  let timer; for(const id of ['search','nepali-normalized','filter-rows',...advancedIds]){const control=$(id);control?.addEventListener(control.tagName==='SELECT'||control.type==='checkbox'?'change':'input',()=>{clearTimeout(timer);timer=setTimeout(()=>{timer=null;state.page=1;render();},100);});}
+  $('match-previous')?.addEventListener('click',()=>navigateMatch(-1));$('match-next')?.addEventListener('click',()=>navigateMatch(1));
+  $('search').addEventListener('keydown',event=>{if(event.key!=='Enter' || event.isComposing)return;event.preventDefault();navigateMatch(event.shiftKey?-1:1);});
+  $('reset-advanced').addEventListener('click',resetAdvanced);$('clear-all').addEventListener('click',resetAll);$('empty-reset').addEventListener('click',resetAll);
+  $('sort').addEventListener('change',()=>{state.page=1;render();});
+  $('sort-folder').addEventListener('click',()=>{$('sort').value='folder-asc';state.page=1;render();});
+  $('sort-name').addEventListener('click',()=>{$('sort').value=$('sort').value==='name-asc'?'name-desc':'name-asc';state.page=1;render();});
+  $('page-size').addEventListener('change',()=>{state.page=1;render();});$('previous').addEventListener('click',()=>{if(state.page>1)state.page--;render();});$('next').addEventListener('click',()=>{state.page++;render();});
+  document.addEventListener('keydown',e=>{const editing=['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)||e.target.isContentEditable;if(e.key==='/'&&!editing&&!e.ctrlKey&&!e.metaKey&&!$('preview').open){e.preventDefault();$('search').focus();}if(e.key==='Escape'&&e.target===$('search')){$('search').value='';state.page=1;render();}});
+  if(data.generatedAt){const date=new Date(data.generatedAt);if(!Number.isNaN(date.valueOf()))$('updated-at').textContent=`Catalogue updated ${date.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'})}`;}
+  folderNavigation();render();
+  if(!window.RAYA_INDEX){$('result-summary').textContent='Catalogue index could not load. Please refresh the page.';$('empty-title').textContent='Catalogue unavailable';$('empty-description').textContent='Please refresh the page or check that files-index.js is available.';}
+
+  fetch('https://api.github.com/repos/ShivaPrasadAcharya/nyayapustika/git/trees/main?recursive=1',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('refresh');return r.json();}).then(tree=>{
+    if(tree.truncated)throw Error('incomplete listing');
+    const existing=new Map(files.map(f=>[f.path,f]));
+    const refreshed=tree.tree.filter(f=>f.type==='blob' && /\.(pdf|txt)$/i.test(f.path)).map(f=>existing.get(f.path)||{path:f.path,name:f.path.split('/').pop(),extension:f.path.split('.').pop().toLowerCase(),folder:/\.pdf$/i.test(f.path)?'pdf':'text',remarks:'',size:f.size});
+    files.splice(0,files.length,...refreshed);folderNavigation();render();
+  }).catch(()=>{ $('updated-at').textContent+=' · Saved catalogue shown; refresh later to check for new uploads.'; });
+})();
+
+
+</script></body>
+</html>
+
+
