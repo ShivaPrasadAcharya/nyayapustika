@@ -51,10 +51,63 @@
 
 
 .go-bottom{bottom:24px}.go-bottom svg{transform:rotate(180deg)}#go-top{bottom:80px}.pdf-notice{padding:12px 16px;background:#edf4ff;color:#193865;display:flex;gap:12px;align-items:center;flex-wrap:wrap}#preview-content:has(.pdf-notice){display:flex;flex-direction:column}#preview-content iframe{flex:1;min-height:60vh}.workspace{max-width:1600px;margin:auto}.catalogue-counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 20px}.catalogue-counts>div{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:10px}.catalogue-counts span{font-size:.8125rem;color:var(--muted)}.catalogue-counts strong{font-size:1.2rem;color:var(--ink);font-variant-numeric:tabular-nums}@media(max-width:620px){.catalogue-counts{gap:7px}.catalogue-counts>div{flex-direction:column;align-items:flex-start;gap:4px;padding:10px}.catalogue-counts span{font-size:.75rem}}
+.access-screen{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:28px 20px;background:var(--bg)}
+.access-card{width:100%;max-width:440px;background:white;border:1px solid var(--line);border-radius:16px;padding:36px;box-shadow:0 12px 45px #18284308}
+.access-brand{padding-bottom:28px;margin-bottom:26px;border-bottom:1px solid var(--line)}
+.access-form h2{font-size:1.25rem;letter-spacing:-.3px;line-height:1.4}
+.access-form p{font-size:.875rem;color:var(--muted);margin:8px 0 25px}
+.access-form label{display:block;font-size:.875rem;font-weight:600;margin-bottom:8px}
+.access-form input{width:100%;height:50px;border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:#f9fafd;color:var(--ink);font-size:1rem}
+.access-form input[aria-invalid="true"]{border-color:#be3c48}
+.access-form>.primary{width:100%;margin-top:18px;min-height:46px}
+.access-form>.text-button{display:block;margin:16px auto 0}
+.access-form .access-code{font-size:1.25rem;letter-spacing:.4em;text-align:center;font-variant-numeric:tabular-nums}
+.access-code::placeholder{font-size:.9375rem;letter-spacing:normal}
+.access-message{font-size:.875rem;color:#a32d3d;line-height:1.6;margin-top:18px}
+.access-card .noscript{font-size:.875rem;margin-top:18px}
+@media(max-width:480px){.access-screen{padding:20px 16px}.access-card{padding:28px 24px}.access-brand{padding-bottom:24px;margin-bottom:24px}.access-form h2{font-size:1.125rem}}
+
+.access-clock{display:flex;align-items:center;gap:20px;padding:16px;background:#f7f9fd;border:1px solid var(--line);border-radius:12px;margin:0 0 26px}
+.access-clock>svg{width:104px;height:104px;flex-shrink:0;fill:none}
+.access-clock-label,.access-clock p{font-size:.75rem;color:var(--muted)}
+#access-clock-time{display:block;font-size:2rem;font-weight:700;letter-spacing:.08em;font-variant-numeric:tabular-nums;line-height:1.4}
+.access-demo-note{font-size:.75rem;color:var(--muted);line-height:1.6;margin-top:24px;text-align:center}
+.catalogue-counts{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1100px){.catalogue-counts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:400px){.access-clock{padding:12px;gap:14px}.access-clock>svg{width:82px;height:82px}#access-clock-time{font-size:1.7rem}}
 </style></head>
 <body>
 
-  <div id="catalogue-app">
+<section id="access-screen" class="access-screen" aria-label="Mobile verification">
+    <div class="access-card">
+      <div class="brand access-brand"><span class="brand-mark"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H4V4Zm9 3a3 3 0 0 1 3-3h5v15h-4a4 4 0 0 0-4 2"/></svg></span><div><h1>Nyayapustika</h1><p>File catalogue</p></div></div>
+      <div class="access-clock">
+        <svg id="access-clock-face" role="img" aria-label="Nepal time" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="55" fill="#fff" stroke="#d7e1f2" stroke-width="2"/>
+          <g stroke="#94a3b8" stroke-width="2"><path d="M60 9v7M111 60h-7M60 111v-7M9 60h7"/><path d="M85.5 15.8l-3 5.2M104.2 34.5l-5.2 3M104.2 85.5l-5.2-3M85.5 104.2l-3-5.2M34.5 104.2l3-5.2M15.8 85.5l5.2-3M15.8 34.5l5.2 3M34.5 15.8l3 5.2"/></g>
+          <line id="access-hour-hand" x1="60" y1="60" x2="60" y2="32" stroke="#182843" stroke-width="4" stroke-linecap="round"/>
+          <line id="access-minute-hand" x1="60" y1="60" x2="60" y2="21" stroke="#2459d3" stroke-width="3" stroke-linecap="round"/>
+          <line id="access-second-hand" x1="60" y1="66" x2="60" y2="18" stroke="#b85742" stroke-width="1.5"/>
+          <circle cx="60" cy="60" r="4" fill="#2459d3"/>
+        </svg>
+        <div><span class="access-clock-label">Nepal time · 24-hour clock</span><time id="access-clock-time">--:--</time><p>Verification code = HHMM</p></div>
+      </div>
+      <form id="access-mobile-step" class="access-form" novalidate>
+        <h2>Mobile verification</h2><p>Enter your registered mobile number to continue.</p>
+        <label for="access-mobile">Mobile number</label><input id="access-mobile" type="tel" inputmode="numeric" autocomplete="off" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit mobile number" required aria-describedby="access-message">
+        <button class="button primary" type="submit">Continue</button>
+      </form>
+      <form id="access-code-step" class="access-form" novalidate hidden>
+        <h2>Enter the clock code</h2><p>Use the four digits shown by the clock above, without the colon. The code changes every minute.</p>
+        <label for="access-code">Verification code (HHMM)</label><input id="access-code" class="access-code" type="text" inputmode="numeric" autocomplete="off" maxlength="4" pattern="[0-9]{4}" placeholder="HHMM" required aria-describedby="access-message">
+        <button class="button primary" type="submit">Verify and open</button><button id="access-change-number" class="text-button" type="button">Change mobile number</button>
+      </form>
+      <p id="access-message" class="access-message" role="alert" hidden></p>
+      <p class="access-demo-note">Clock-based demo verification. No SMS is sent.</p>
+      <noscript><p class="noscript">Enable JavaScript to use the clock verification and catalogue.</p></noscript>
+    </div>
+  </section>
+  <div id="catalogue-app" hidden inert>
   <a class="skip-link" href="#catalogue">Skip to files</a>
   <svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
     <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H4V4Zm9 3a3 3 0 0 1 3-3h5v15h-4a4 4 0 0 0-4 2"/></symbol>
@@ -86,7 +139,7 @@
     </aside>
     <main id="catalogue">
       <div class="heading-row"><div><h2 id="view-title">All files</h2><p id="view-description">PDF and text files.</p></div><span id="total-pill" class="total-pill">0 files</span></div>
-      <section class="catalogue-counts" aria-label="File totals"><div><span>PDF–TXT pairs</span><strong id="pair-count">0</strong></div><div><span>Total PDF files</span><strong id="pdf-count">0</strong></div><div><span>Total text files</span><strong id="txt-count">0</strong></div></section>
+      <section class="catalogue-counts" aria-label="File totals"><div><span>PDF–TXT pairs</span><strong id="pair-count">0</strong></div><div><span>Total PDF files</span><strong id="pdf-count">0</strong></div><div><span>Total text files</span><strong id="txt-count">0</strong></div><div><span>Standalone PDF files</span><strong id="standalone-pdf-count">0</strong></div></section>
       <section class="search-card" aria-label="Search and filters">
         <div class="search-row"><div class="search-box"><svg><use href="#i-search"/></svg><label class="sr-only" for="search">Search files</label><input id="search" type="search" placeholder="Search file names, folders or remarks…" autocomplete="off"><kbd>/</kbd><div class="search-matches" role="group" aria-label="Search match navigation"><span id="match-count" role="status" aria-live="polite" aria-label="No search matches">0 / 0</span><button id="match-previous" type="button" aria-label="Previous search match" title="Previous match (Shift+Enter)" disabled><svg aria-hidden="true"><use href="#i-up"/></svg></button><button id="match-next" type="button" aria-label="Next search match" title="Next match (Enter)" disabled><svg aria-hidden="true"><use href="#i-up"/></svg></button></div></div><button id="advanced-toggle" class="button secondary" aria-expanded="false" aria-controls="advanced"><svg><use href="#i-filter"/></svg>Advanced search<span id="filter-count" class="filter-count" hidden>0</span></button></div>
         <div id="advanced" class="advanced" hidden>
@@ -253,7 +306,8 @@
     return {
       pairs: rows.filter(file => file.extension === 'pdf' && file.textPath).length,
       pdf: source.filter(file => file.extension === 'pdf').length,
-      txt: source.filter(file => file.extension === 'txt').length
+      txt: source.filter(file => file.extension === 'txt').length,
+      standalonePdf: rows.filter(file => file.extension === 'pdf' && !file.textPath).length
     };
   }
   function pageSize() {
@@ -264,6 +318,7 @@
     $('pair-count').textContent = totals.pairs;
     $('pdf-count').textContent = totals.pdf;
     $('txt-count').textContent = totals.txt;
+    $('standalone-pdf-count').textContent = totals.standalonePdf;
     const nav = $('folders'); nav.replaceChildren();
     for (const folder of folders) {
       const count = folder.key === 'all' ? files.length : files.filter(f => f.folder === folder.key).length;
@@ -564,7 +619,7 @@
   $('sort-folder').addEventListener('click',()=>{$('sort').value='folder-asc';state.page=1;render();});
   $('sort-name').addEventListener('click',()=>{$('sort').value=$('sort').value==='name-asc'?'name-desc':'name-asc';state.page=1;render();});
   $('page-size').addEventListener('change',()=>{state.page=1;render();});$('previous').addEventListener('click',()=>{if(state.page>1)state.page--;render();});$('next').addEventListener('click',()=>{state.page++;render();});
-  document.addEventListener('keydown',e=>{const editing=['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)||e.target.isContentEditable;if(e.key==='/'&&!editing&&!e.ctrlKey&&!e.metaKey&&!$('preview').open){e.preventDefault();$('search').focus();}if(e.key==='Escape'&&e.target===$('search')){$('search').value='';state.page=1;render();}});
+  document.addEventListener('keydown',e=>{const editing=['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)||e.target.isContentEditable;if(e.key==='/'&&!$('catalogue-app').hidden&&!editing&&!e.ctrlKey&&!e.metaKey&&!$('preview').open){e.preventDefault();$('search').focus();}if(e.key==='Escape'&&e.target===$('search')){$('search').value='';state.page=1;render();}});
   if(data.generatedAt){const date=new Date(data.generatedAt);if(!Number.isNaN(date.valueOf()))$('updated-at').textContent=`Catalogue updated ${date.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'})}`;}
   folderNavigation();render();
   if(!window.RAYA_INDEX){$('result-summary').textContent='Catalogue index could not load. Please refresh the page.';$('empty-title').textContent='Catalogue unavailable';$('empty-description').textContent='Please refresh the page or check that files-index.js is available.';}
@@ -578,8 +633,187 @@
 })();
 
 
+</script><script>
+/* A browser-side access screen. No SMS is sent; public files remain public. */
+(() => {
+  'use strict';
+  const MOBILE = '9849667879';
+  const KEY = 'nyayapustika.access.v1';
+  const SIX_HOURS = 6 * 60 * 60 * 1000, ONE_HOUR = 60 * 60 * 1000;
+  const $ = id => document.getElementById(id);
+  const clockFormatter = new Intl.DateTimeFormat('en-GB', {
+    timeZone:'Asia/Kathmandu', hour:'2-digit', minute:'2-digit', second:'2-digit', hourCycle:'h23'
+  });
+  function clockParts(date = new Date()) {
+    const values = Object.fromEntries(clockFormatter.formatToParts(date).map(part => [part.type, part.value]));
+    return {hour:values.hour, minute:values.minute, second:values.second};
+  }
+  function updateClock() {
+    const time = clockParts();
+    const display = time.hour + ':' + time.minute;
+    $('access-clock-time').textContent = display;
+    $('access-clock-face').setAttribute('aria-label', 'Nepal time ' + display);
+    $('access-hour-hand').setAttribute('transform', 'rotate(' + ((Number(time.hour) % 12) * 30 + Number(time.minute) / 2) + ' 60 60)');
+    $('access-minute-hand').setAttribute('transform', 'rotate(' + Number(time.minute) * 6 + ' 60 60)');
+    $('access-second-hand').setAttribute('transform', 'rotate(' + Number(time.second) * 6 + ' 60 60)');
+    return time.hour + time.minute;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+  document.addEventListener('visibilitychange', updateClock);
+  window.addEventListener('focus', updateClock);
+  let unlocked = false, numberAccepted = false, present = true;
+  let memorySession = null, storageUnavailable = false, expiryTimer;
+
+  function readSession() {
+    if (storageUnavailable) return memorySession;
+    let raw;
+    try { raw = localStorage.getItem(KEY); }
+    catch { storageUnavailable = true; return memorySession; }
+    try { return raw ? JSON.parse(raw) : null; }
+    catch { return null; }
+  }
+  function writeSession(session) {
+    memorySession = session;
+    if (storageUnavailable) return;
+    try { session ? localStorage.setItem(KEY, JSON.stringify(session)) : localStorage.removeItem(KEY); }
+    catch { storageUnavailable = true; }
+  }
+  function validSession(session, now = Date.now()) {
+    return !!session && Number.isFinite(session.startedAt) && Number.isFinite(session.expiresAt)
+      && Number.isFinite(session.lastSeenAt) && session.expiresAt === session.startedAt + SIX_HOURS
+      && now >= session.startedAt && now < session.expiresAt && session.lastSeenAt >= session.startedAt
+      && session.lastSeenAt <= now;
+  }
+  function reusableSession(session, now = Date.now()) {
+    if (!validSession(session, now)) return false;
+    const lastOpen = session.closedAt === null ? session.lastSeenAt : session.closedAt;
+    return Number.isFinite(lastOpen) && lastOpen >= session.startedAt && lastOpen <= now
+      && now - lastOpen < ONE_HOUR;
+  }
+  function message(text = '') {
+    $('access-message').textContent = text;
+    $('access-message').hidden = !text;
+    $('access-mobile').removeAttribute('aria-invalid');
+    $('access-code').removeAttribute('aria-invalid');
+  }
+  function mobileStep() {
+    numberAccepted = false;
+    $('access-mobile-step').hidden = false;
+    $('access-code-step').hidden = true;
+    $('access-code').value = '';
+    message();
+  }
+  function lock(text = '') {
+    clearTimeout(expiryTimer);
+    unlocked = false;
+    if ($('preview').open) $('preview').close();
+    $('catalogue-app').hidden = true;
+    $('catalogue-app').setAttribute('inert', '');
+    $('access-screen').hidden = false;
+    mobileStep();
+    $('access-mobile').value = '';
+    message(text);
+    $('access-mobile').focus();
+  }
+  function scheduleExpiry(session) {
+    clearTimeout(expiryTimer);
+    expiryTimer = setTimeout(checkOpenSession, Math.max(0, session.expiresAt - Date.now()));
+  }
+  function touch(session) {
+    const next = {...session, lastSeenAt:Date.now(), closedAt:null};
+    writeSession(next);
+    scheduleExpiry(next);
+  }
+  function unlock(session) {
+    unlocked = true;
+    numberAccepted = false;
+    message();
+    $('access-code').value = '';
+    $('access-mobile').value = '';
+    $('access-screen').hidden = true;
+    $('catalogue-app').hidden = false;
+    $('catalogue-app').removeAttribute('inert');
+    touch(session);
+  }
+  function checkOpenSession() {
+    if (!unlocked || !present) return;
+    const session = readSession();
+    if (!validSession(session)) {
+      writeSession(null);
+      lock('Your session has expired. Please verify again.');
+    } else touch(session);
+  }
+  function resume() {
+    present = true;
+    const session = readSession();
+    if (reusableSession(session)) unlock(session);
+    else {
+      writeSession(null);
+      lock(session ? 'Your session has expired. Please verify again.' : '');
+    }
+  }
+
+  $('access-mobile-step').addEventListener('submit', event => {
+    event.preventDefault();
+    if ($('access-mobile').value.trim() !== MOBILE) {
+      message('Please enter the correct mobile number.');
+      $('access-mobile').setAttribute('aria-invalid', 'true');
+      $('access-mobile').focus();
+      return;
+    }
+    numberAccepted = true;
+    message();
+    $('access-mobile-step').hidden = true;
+    $('access-code-step').hidden = false;
+    $('access-code').value = '';
+    $('access-code').focus();
+  });
+  $('access-code-step').addEventListener('submit', event => {
+    event.preventDefault();
+    if (!numberAccepted) { mobileStep(); $('access-mobile').focus(); return; }
+    if (!/^[0-9]{4}$/.test($('access-code').value) || $('access-code').value !== updateClock()) {
+      message('Enter the current four clock digits (HHMM), without the colon. The code changes every minute.');
+      $('access-code').setAttribute('aria-invalid', 'true');
+      $('access-code').focus();
+      return;
+    }
+    const now = Date.now();
+    unlock({startedAt:now, expiresAt:now + SIX_HOURS, lastSeenAt:now, closedAt:null});
+    $('search').focus();
+  });
+  $('access-change-number').addEventListener('click', () => { mobileStep(); $('access-mobile').focus(); });
+  for (const id of ['access-mobile', 'access-code']) {
+    $(id).addEventListener('input', () => {
+      $(id).value = $(id).value.replace(/[^0-9]/g, '').slice(0, id === 'access-mobile' ? 10 : 4);
+      message();
+    });
+  }
+  window.addEventListener('pagehide', () => {
+    present = false;
+    clearTimeout(expiryTimer);
+    const session = readSession(), now = Date.now();
+    if (unlocked && validSession(session, now)) writeSession({...session, lastSeenAt:now, closedAt:now});
+  });
+  window.addEventListener('pageshow', resume);
+  document.addEventListener('visibilitychange', checkOpenSession);
+  window.addEventListener('focus', checkOpenSession);
+  window.addEventListener('storage', event => {
+    if (event.key !== KEY && event.key !== null) return;
+    const session = readSession();
+    if (!validSession(session)) lock('Your session has expired. Please verify again.');
+    else if (!unlocked && reusableSession(session)) unlock(session);
+    else if (unlocked) scheduleExpiry(session);
+  });
+  // While open, backgrounding the tab does not count as closing it. Heartbeats
+  // also cover browser exits where pagehide was not delivered by the browser.
+  setInterval(checkOpenSession, 15000);
+  resume();
+})();
+
 </script></body>
 </html>
+
 
 
 
