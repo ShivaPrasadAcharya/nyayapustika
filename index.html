@@ -50,7 +50,8 @@
 
 
 
-.go-bottom{bottom:24px}.go-bottom svg{transform:rotate(180deg)}#go-top{bottom:80px}.pdf-notice{padding:12px 16px;background:#edf4ff;color:#193865;display:flex;gap:12px;align-items:center;flex-wrap:wrap}#preview-content:has(.pdf-notice){display:flex;flex-direction:column}#preview-content iframe{flex:1;min-height:60vh}.workspace{max-width:1600px;margin:auto}</style></head>
+.go-bottom{bottom:24px}.go-bottom svg{transform:rotate(180deg)}#go-top{bottom:80px}.pdf-notice{padding:12px 16px;background:#edf4ff;color:#193865;display:flex;gap:12px;align-items:center;flex-wrap:wrap}#preview-content:has(.pdf-notice){display:flex;flex-direction:column}#preview-content iframe{flex:1;min-height:60vh}.workspace{max-width:1600px;margin:auto}.catalogue-counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 20px}.catalogue-counts>div{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:10px}.catalogue-counts span{font-size:.8125rem;color:var(--muted)}.catalogue-counts strong{font-size:1.2rem;color:var(--ink);font-variant-numeric:tabular-nums}@media(max-width:620px){.catalogue-counts{gap:7px}.catalogue-counts>div{flex-direction:column;align-items:flex-start;gap:4px;padding:10px}.catalogue-counts span{font-size:.75rem}}
+</style></head>
 <body>
 
   <div id="catalogue-app">
@@ -85,6 +86,7 @@
     </aside>
     <main id="catalogue">
       <div class="heading-row"><div><h2 id="view-title">All files</h2><p id="view-description">PDF and text files.</p></div><span id="total-pill" class="total-pill">0 files</span></div>
+      <section class="catalogue-counts" aria-label="File totals"><div><span>PDF–TXT pairs</span><strong id="pair-count">0</strong></div><div><span>Total PDF files</span><strong id="pdf-count">0</strong></div><div><span>Total text files</span><strong id="txt-count">0</strong></div></section>
       <section class="search-card" aria-label="Search and filters">
         <div class="search-row"><div class="search-box"><svg><use href="#i-search"/></svg><label class="sr-only" for="search">Search files</label><input id="search" type="search" placeholder="Search file names, folders or remarks…" autocomplete="off"><kbd>/</kbd><div class="search-matches" role="group" aria-label="Search match navigation"><span id="match-count" role="status" aria-live="polite" aria-label="No search matches">0 / 0</span><button id="match-previous" type="button" aria-label="Previous search match" title="Previous match (Shift+Enter)" disabled><svg aria-hidden="true"><use href="#i-up"/></svg></button><button id="match-next" type="button" aria-label="Next search match" title="Next match (Enter)" disabled><svg aria-hidden="true"><use href="#i-up"/></svg></button></div></div><button id="advanced-toggle" class="button secondary" aria-expanded="false" aria-controls="advanced"><svg><use href="#i-filter"/></svg>Advanced search<span id="filter-count" class="filter-count" hidden>0</span></button></div>
         <div id="advanced" class="advanced" hidden>
@@ -105,7 +107,7 @@
       <section class="table-card" aria-label="File catalogue">
         <table><colgroup><col class="col-sn"><col class="col-folder"><col class="col-name"><col class="col-link"><col class="col-remarks"></colgroup><thead><tr><th scope="col">SN</th><th scope="col"><button id="sort-folder">Folder name<svg><use href="#i-sort"/></svg></button></th><th scope="col"><button id="sort-name">File name<svg><use href="#i-sort"/></svg></button></th><th scope="col">Link</th><th scope="col">Remarks</th></tr></thead><tbody id="file-rows"></tbody></table>
         <div id="empty-state" class="empty-state" hidden><span class="empty-icon"><svg><use href="#i-folder"/></svg></span><h3 id="empty-title">No files added yet</h3><p id="empty-description">Add your files to the folders to start your catalogue.</p><button id="empty-reset" class="button secondary" hidden>Clear filters</button></div>
-        <footer class="table-footer"><span id="page-summary">0 files</span><div class="pagination"><label for="page-size">Rows per page</label><select id="page-size"><option>25</option><option>50</option><option selected>100</option></select><button id="previous" class="button page-button" disabled>Previous</button><button id="next" class="button page-button" disabled>Next</button></div></footer>
+        <footer class="table-footer"><span id="page-summary">0 files</span><div class="pagination"><label for="page-size">Rows per page</label><select id="page-size"><option selected>100</option><option>150</option><option>200</option><option>250</option><option>300</option><option value="all">All</option></select><button id="previous" class="button page-button" disabled>Previous</button><button id="next" class="button page-button" disabled>Next</button></div></footer>
       </section>
       <div class="catalogue-footer"><span id="updated-at"></span><span>Open to view · Download to save</span></div>
       <noscript><p class="noscript">Enable JavaScript to browse and search this catalogue. You can also access the files through the GitHub repository.</p></noscript>
@@ -119,7 +121,7 @@
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
-  const folders = [{key:'all',label:'All files',icon:'folder'},{key:'pdf',label:'PDFs',icon:'file'},{key:'text',label:'Text files',icon:'file'}];
+  const folders = [{key:'all',label:'All files',icon:'folder'},{key:'pdf',label:'PDFs',icon:'file'},{key:'text',label:'Standalone TXT',icon:'file'}];
   const folderKeys = new Set(folders.slice(1).map(f => f.key));
   const data = window.RAYA_INDEX || {files:[], generatedAt:null};
   const clean = value => String(value ?? '').normalize('NFKC').toLocaleLowerCase().replace(/\s+/g,' ').trim();
@@ -247,7 +249,21 @@
       ? `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl(file))}` : fileUrl(file);
   }
   function bytes(n) { if (!Number.isFinite(n)) return ''; if (n < 1024) return `${n} B`; if (n < 1048576) return `${(n/1024).toFixed(1)} KB`; return `${(n/1048576).toFixed(1)} MB`; }
+  function catalogueCounts(source, rows) {
+    return {
+      pairs: rows.filter(file => file.extension === 'pdf' && file.textPath).length,
+      pdf: source.filter(file => file.extension === 'pdf').length,
+      txt: source.filter(file => file.extension === 'txt').length
+    };
+  }
+  function pageSize() {
+    return $('page-size').value === 'all' ? Math.max(1, state.filtered.length) : Number($('page-size').value);
+  }
   function folderNavigation() {
+    const totals = catalogueCounts(allFiles, files);
+    $('pair-count').textContent = totals.pairs;
+    $('pdf-count').textContent = totals.pdf;
+    $('txt-count').textContent = totals.txt;
     const nav = $('folders'); nav.replaceChildren();
     for (const folder of folders) {
       const count = folder.key === 'all' ? files.length : files.filter(f => f.folder === folder.key).length;
@@ -408,22 +424,22 @@
     if(timer){clearTimeout(timer);timer=null;state.page=1;render();state.activeMatch=-1;}
     const total=state.matches.length;if(!total)return;
     state.activeMatch=state.activeMatch<0 ? direction>0 ? 0 : total-1 : (state.activeMatch+direction+total)%total;
-    state.page=Math.floor(state.matches[state.activeMatch].fileIndex/Number($('page-size').value))+1;render(true);scrollToActiveMatch();
+    state.page=Math.floor(state.matches[state.activeMatch].fileIndex/pageSize())+1;render(true);scrollToActiveMatch();
   }
   function render(preserveMatch=false) {
-    state.filtered=getFiltered();const n=state.filtered.length,size=Number($('page-size').value),pages=Math.max(1,Math.ceil(n/size));state.page=Math.min(state.page,pages);
+    state.filtered=getFiltered();const n=state.filtered.length,size=pageSize(),pages=Math.max(1,Math.ceil(n/size));state.page=Math.min(state.page,pages);
     const start=(state.page-1)*size,end=Math.min(start+size,n),fragment=document.createDocumentFragment();
     if(!preserveMatch)state.activeMatch=state.matches.findIndex(match=>match.fileIndex>=start && match.fileIndex<end);
     for(let i=start;i<end;i++)fragment.append(row(state.filtered[i],i+1));$('file-rows').replaceChildren(fragment);
     const folder=folders.find(f=>f.key===state.folder);$('view-title').textContent=folder.label;
-    $('view-description').textContent=state.folder==='all'?'PDF and text files.':`Files / ${folder.key}`;
+    $('view-description').textContent=state.folder==='all'?'PDFs with their TXT companions, plus standalone text files.':state.folder==='text'?'Text files without a matching PDF.':`Files / ${folder.key}`;
     $('total-pill').textContent=`${files.length} ${files.length===1?'file':'files'}`;
     $('result-summary').textContent=!($('filter-rows')?.checked ?? true) && state.hasSearch ? `${n} ${n===1?'file':'files'} shown · ${state.matchedRows} matching ${state.matchedRows===1?'file':'files'}` : n===files.length?`${n} ${n===1?'file':'files'} in the catalogue`:`${n} of ${files.length} files match`;
     const count=advancedCount();$('filter-count').hidden=!count;$('filter-count').textContent=count;
     const filtered=!!($('search').value.trim()||count||state.folder!=='all');$('clear-all').hidden=!filtered;
     $('empty-state').hidden=n>0;$('empty-reset').hidden=!files.length;
     $('empty-title').textContent=files.length?'No matching files':'No files added yet';
-    $('empty-description').textContent=files.length?'Try a different search or clear your filters.':'Your catalogue is ready. Add files to the PDF, images, docs, spreadsheet or powerpoints folders.';
+    $('empty-description').textContent=files.length?'Try a different search or clear your filters.':'Your catalogue is ready. Add PDF or TXT files to the repository.';
     $('page-summary').textContent=n?`${start+1}–${end} of ${n} · Page ${state.page} of ${pages}`:'0 files';
     $('previous').disabled=state.page<=1;$('next').disabled=state.page>=pages;
     updateMatchNavigation();
@@ -564,6 +580,7 @@
 
 </script></body>
 </html>
+
 
 
 
