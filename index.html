@@ -151,7 +151,7 @@
           <p class="search-help">Search covers the catalogue’s names and remarks. It does not search inside file contents. Use the arrows beside the search box, or Enter / Shift+Enter, to move through matches.</p>
         </div>
       </section>
-      <div class="results-toolbar"><p id="result-summary" role="status" aria-live="polite">Loading catalogue…</p><div class="results-controls"><button id="clear-all" class="text-button" hidden>Clear filters</button><label for="sort" class="sr-only">Sort files</label><select id="sort"><option value="name-asc">File name: A–Z</option><option value="name-desc">File name: Z–A</option><option value="folder-asc">Folder: A–Z</option></select></div></div>
+      <div class="results-toolbar"><p id="result-summary" role="status" aria-live="polite">Loading catalogue…</p><div class="results-controls"><button id="clear-all" class="text-button" hidden>Clear filters</button><label for="sort" class="sr-only">Sort files</label><select id="sort"><option value="name-asc">File name: A–Z</option><option value="name-desc">File name: Z–A</option><option value="folder-asc">Folder: A–Z</option><option value="size-asc">File size: Smallest first</option><option value="size-desc">File size: Largest first</option><option value="upload-asc">File upload date: Oldest first</option><option value="upload-desc">File upload date: Newest first</option></select></div></div>
       <section class="table-card" aria-label="File catalogue">
         <table><colgroup><col class="col-sn"><col class="col-folder"><col class="col-name"><col class="col-link"><col class="col-remarks"></colgroup><thead><tr><th scope="col">SN</th><th scope="col"><button id="sort-folder">Folder name<svg><use href="#i-sort"/></svg></button></th><th scope="col"><button id="sort-name">File name<svg><use href="#i-sort"/></svg></button></th><th scope="col">Link</th><th scope="col">Remarks</th></tr></thead><tbody id="file-rows"></tbody></table>
         <div id="empty-state" class="empty-state" hidden><span class="empty-icon"><svg><use href="#i-folder"/></svg></span><h3 id="empty-title">No files added yet</h3><p id="empty-description">Add your files to the folders to start your catalogue.</p><button id="empty-reset" class="button secondary" hidden>Clear filters</button></div>
@@ -237,6 +237,137 @@
     },
     matches(query, text) {return this.search(query, text).length > 0;}
   };
+  const uploadTimes = new Map(Object.entries({
+  "20830302.छोरासँग.भेटघाट.गर्न.दिनू.मनिषा.थापा.pdf": 1793288418,
+  "20830302.छोरासँग.भेटघाट.गर्न.दिनू.मनिषा.थापा.txt": 1793288418,
+  "20830711_हेर्न नमिल्ने सर्वोच्च अदालत.pdf": 1793196630,
+  "20830711_हेर्न नमिल्ने सर्वोच्च अदालत.txt": 1793196664,
+  "20830713.थुनाबाट.धरौट.jail2bail.सहकारीठगी.self.pdf": 1793420032,
+  "20830801.जग्गाको अनुसुचिहरू ७ नं फाटवारी र क्षेत्रिय किताब झिकाउने आदेश (दर्ता, नामसारी).pdf": 1795015361,
+  "20830801.जग्गाको अनुसुचिहरू ७ नं फाटवारी र क्षेत्रिय किताब झिकाउने आदेश (दर्ता, नामसारी).txt": 1795015402,
+  "20830801.विशेषज्ञ डाक्टर साक्षी उपस्थित गराउने आदेश.pdf": 1795015361,
+  "20830801.विशेषज्ञ डाक्टर साक्षी उपस्थित गराउने आदेश.txt": 1795015402,
+  "20830802.एउटा म्याद सकिएपछि अर्को म्याद गोरखापत्रमा प्रकाशित गर्नु.फौजदारी.pdf": 1795012986,
+  "20830802.एउटा म्याद सकिएपछि अर्को म्याद गोरखापत्रमा प्रकाशित गर्नु.फौजदारी.txt": 1795013403,
+  "20830802.कुटपिट र अंश मुद्दा साथै राख्ने आदेश.pdf": 1795012986,
+  "20830802.कुटपिट र अंश मुद्दा साथै राख्ने आदेश.txt": 1795013403,
+  "20830802.जग्गा रोक्का राखी अदालतलाई जानकारी पठाउनु.देवानी.pdf": 1795012986,
+  "20830802.जग्गा रोक्का राखी अदालतलाई जानकारी पठाउनु.देवानी.txt": 1795013403,
+  "20830802.मुलतबीबाट जगाउने.फौजदारी.pdf": 1795012986,
+  "20830802.मुलतबीबाट जगाउने.फौजदारी.txt": 1795013403,
+  "20830802.मेलमिलाप नभए देहायका कार्य गर्नू.चेक अनादर.pdf": 1795012986,
+  "20830802.मेलमिलाप नभए देहायका कार्य गर्नू.चेक अनादर.txt": 1795013403,
+  "20830802.मेलमिलाप नभए साक्षी बुझ्ने.pdf": 1795012986,
+  "20830802.मेलमिलाप नभए साक्षी बुझ्ने.txt": 1795013403,
+  "20830802.म्याद तामेलको लागि बुँदागत आदेश.वैकिङ कसूर.pdf": 1795012986,
+  "20830802.म्याद तामेलको लागि बुँदागत आदेश.वैकिङ कसूर.txt": 1795013403,
+  "CMS मा थुनुवा जनाउनू.pdf": 1795012986,
+  "CMS मा थुनुवा जनाउनू.txt": 1795013403,
+  "file-04f59a1cc7a96234.pdf": 1793192901,
+  "file-04f59a1cc7a96234.txt": 1793192901,
+  "file-0c0e2ba597d61030.pdf": 1793192901,
+  "file-0c0e2ba597d61030.txt": 1793192901,
+  "file-0d9a48c3ec8d3cb5.pdf": 1793192901,
+  "file-0d9a48c3ec8d3cb5.txt": 1793192901,
+  "file-15e3fa3dddbbeb2a.pdf": 1793192901,
+  "file-15e3fa3dddbbeb2a.txt": 1793192901,
+  "file-178dca7ee88298ab.pdf": 1793192901,
+  "file-178dca7ee88298ab.txt": 1793192901,
+  "file-2271399591668aa0.pdf": 1793192901,
+  "file-2271399591668aa0.txt": 1793192901,
+  "file-29e58efebc6c4f53.pdf": 1793192901,
+  "file-29e58efebc6c4f53.txt": 1793192901,
+  "file-35070e16381aaf9b.pdf": 1793192901,
+  "file-35070e16381aaf9b.txt": 1793192901,
+  "file-367b62037106d5bf.pdf": 1793192901,
+  "file-367b62037106d5bf.txt": 1793192901,
+  "file-36c0cc813e72e69e.pdf": 1793192901,
+  "file-36c0cc813e72e69e.txt": 1793192901,
+  "file-412383b2f6608ad5.pdf": 1793192901,
+  "file-412383b2f6608ad5.txt": 1793192901,
+  "file-43f72e542ba2134a.pdf": 1793192901,
+  "file-43f72e542ba2134a.txt": 1793192901,
+  "file-48257fd6cce6add0.pdf": 1793192901,
+  "file-48257fd6cce6add0.txt": 1793192901,
+  "file-4a4d4303b2f62a25.pdf": 1793192901,
+  "file-4a4d4303b2f62a25.txt": 1793192901,
+  "file-4cf09aa43c2604ce.pdf": 1793192901,
+  "file-4cf09aa43c2604ce.txt": 1793192901,
+  "file-53ce03ecc9025e2f.pdf": 1793192901,
+  "file-53ce03ecc9025e2f.txt": 1793192901,
+  "file-55fb4abe135b2699.pdf": 1793192901,
+  "file-55fb4abe135b2699.txt": 1793192901,
+  "file-56be0a7ec59ab9cd.pdf": 1793192901,
+  "file-5d035449b47b125e.pdf": 1793192901,
+  "file-60259cd694f151c6.pdf": 1793192901,
+  "file-60259cd694f151c6.txt": 1793192901,
+  "file-658abc4a904ad812.pdf": 1793192901,
+  "file-658abc4a904ad812.txt": 1793192901,
+  "file-6fd7d47e25ef0638.pdf": 1793192901,
+  "file-6fd7d47e25ef0638.txt": 1793192901,
+  "file-71d0f443f13f7712.pdf": 1793192901,
+  "file-71d0f443f13f7712.txt": 1793192901,
+  "file-756a42074456c236.pdf": 1793192901,
+  "file-756a42074456c236.txt": 1793192901,
+  "file-8bd1ece9eaa37628.pdf": 1793192901,
+  "file-8bd1ece9eaa37628.txt": 1793192901,
+  "file-8c85a987a0ccca3f.pdf": 1793192901,
+  "file-8c85a987a0ccca3f.txt": 1793192901,
+  "file-8e3c4ce09a1afc50.pdf": 1793192901,
+  "file-95c7f230f9bdecc6.pdf": 1793192901,
+  "file-95c7f230f9bdecc6.txt": 1793192901,
+  "file-a4ddb7253a354761.pdf": 1793192901,
+  "file-a4ddb7253a354761.txt": 1793192901,
+  "file-aa10d1dbdc2e1356.pdf": 1793192901,
+  "file-ae8a6c2ca2d5371e.pdf": 1793192901,
+  "file-ae8a6c2ca2d5371e.txt": 1793192901,
+  "file-b3b54593a70cff7b.pdf": 1793192901,
+  "file-b3b54593a70cff7b.txt": 1793192901,
+  "file-be051d67f022fe93.pdf": 1793192901,
+  "file-beafda5102b9d28e.pdf": 1793192901,
+  "file-beafda5102b9d28e.txt": 1793192901,
+  "file-c0dfdd1f21d54b8a.pdf": 1793192901,
+  "file-c0dfdd1f21d54b8a.txt": 1793192901,
+  "file-c101298c97fbcb08.pdf": 1793192901,
+  "file-c101298c97fbcb08.txt": 1793192901,
+  "file-c53a2473c62b60ab.pdf": 1793192901,
+  "file-caa49802ccdd7715.pdf": 1793192901,
+  "file-caa49802ccdd7715.txt": 1793192901,
+  "file-d8fc6ca3aa016818.pdf": 1793192901,
+  "file-d8fc6ca3aa016818.txt": 1793192901,
+  "file-db96cd668d34f3cc.pdf": 1793192901,
+  "file-db96cd668d34f3cc.txt": 1793192901,
+  "file-e2d4d4373006ad7b.pdf": 1793192901,
+  "file-e2d4d4373006ad7b.txt": 1793192901,
+  "file-ecdb70086e8c6cda.pdf": 1793192901,
+  "file-fcd47dc902262fa1.pdf": 1793192901,
+  "file-fcd47dc902262fa1.txt": 1793192901,
+  "अंशियार खुलाई वयान पक्रियासमेत पुरा गर्नू (अंश).pdf": 1795015361,
+  "अंशियार खुलाई वयान पक्रियासमेत पुरा गर्नू (अंश).txt": 1795015402,
+  "अड्डाको रोहबरमा बुझिएको म्याद बदर.pdf": 1793552599,
+  "छुट्टै पेशीमा निराकरण हुने विषय रहेकोले प्रासुमा खारेज गर्न मिलेन (प्रासु).pdf": 1793552599,
+  "छुट्टै_पेशीमा_निरूपण_हुनुपर्ने_विषय(प्रासु).pdf": 1793297609,
+  "थप प्रसारण नगर्नु भनी अआ जारी (निषेधाज्ञा).pdf": 1793552599,
+  "थप_प्रसारण_हुन_नदिनु_अआ.pdf": 1793297609,
+  "पुरक लिखित बहसनोट पेश गर्नु (सवारी अंगभंग).pdf": 1793813591,
+  "पेनड्राइभमा भएको प्रतिवेदन स्रेस्तेदारबाट प्रमाणित गरी मिसिल सामेल राख्नू (मानवबेचविखन).pdf": 1795015361,
+  "पेनड्राइभमा भएको प्रतिवेदन स्रेस्तेदारबाट प्रमाणित गरी मिसिल सामेल राख्नू (मानवबेचविखन).txt": 1795015402,
+  "प्रतिवादीले गरेको वयान सम्बन्धमा वादीको प्रतिक्रिया बयान लिने (लेनदेन).pdf": 1795015361,
+  "प्रतिवादीले गरेको वयान सम्बन्धमा वादीको प्रतिक्रिया बयान लिने (लेनदेन).txt": 1795015402,
+  "मिलापत्रको लागि समय प्रदान.फौजदारी. मिलापत्र यसै इजलासमा पेश गर्नू.pdf": 1795012986,
+  "मिलापत्रको लागि समय प्रदान.फौजदारी. मिलापत्र यसै इजलासमा पेश गर्नू.txt": 1795013403,
+  "मौखिक अनुरोधका आधारमा मेलमिलापको समय थप.pdf": 1795015361,
+  "मौखिक अनुरोधका आधारमा मेलमिलापको समय थप.txt": 1795015402,
+  "वडा कार्यालयको प्रमाणितकोहदसम्म लिखत बदर (प्रासु)self.pdf": 1793813739,
+  "सहकारीको ऋणको बेहोरा खुलाई पठाइदिने (अंश).pdf": 1795015361,
+  "सहकारीको ऋणको बेहोरा खुलाई पठाइदिने (अंश).txt": 1795015402,
+  "साक्षी उपस्थित गराउन नसके प्रतिवेदन पठाउनू (फौजदारी).pdf": 1795015361,
+  "साक्षी उपस्थित गराउन नसके प्रतिवेदन पठाउनू (फौजदारी).txt": 1795015402,
+  "साधसोधको लागि यसै इजलासमा पेस गर्नू.pdf": 1795015361,
+  "साधसोधको लागि यसै इजलासमा पेस गर्नू.txt": 1795015402,
+  "हेर्न नमिल्ने (self).pdf": 1793552599,
+  "हेर्न नमिल्ने (यसपूर्व नै हेर्न नमिल्ने मुद्दाको विषयसमेत समावेस भएको देखिएकोले).pdf": 1793297609
+}));
   const collator = new Intl.Collator(undefined, {numeric:true, sensitivity:'base'});
   // Keep every document in the source collection, but display companion TXT
   // through its PDF row. Standalone or ambiguous TXT files remain visible.
@@ -259,11 +390,46 @@
       delete file.textPath;
       if (companion) {
         file.textPath = companion.path;
+        file.combinedSize = file.size + companion.size;
         pairedText.add(companion.path);
       }
     }
     return documents.filter(file => file.extension !== 'txt' || !pairedText.has(file.path));
   }
+  function rowUploadTime(file) {
+    const primary = uploadTimes.get(file.path);
+    if (!file.textPath) return primary;
+    const companion = uploadTimes.get(file.textPath);
+    return primary == null || companion == null ? undefined : Math.max(primary, companion);
+  }
+
+  let loadingUploadTimes = false;
+  async function loadUploadTimes() {
+    if (loadingUploadTimes || !$('sort').value.startsWith('upload-')) return;
+    loadingUploadTimes = true;
+    try {
+      for (const file of allFiles) {
+        if (!$('sort').value.startsWith('upload-')) break;
+        if (uploadTimes.has(file.path)) continue;
+        const history = new URL('https://api.github.com/repos/ShivaPrasadAcharya/nyayapustika/commits');
+        history.search = new URLSearchParams({sha:'main', path:file.path, per_page:'1'});
+        let response = await fetch(history);
+        if (!response.ok) throw Error('Upload date unavailable');
+        const last = (response.headers.get('Link') || '').match(/<([^>]+)>; rel="last"/);
+        if (last) response = await fetch(last[1]);
+        if (!response.ok) throw Error('Upload date unavailable');
+        const [first] = await response.json();
+        const time = Date.parse(first?.commit?.committer?.date);
+        if (Number.isFinite(time)) uploadTimes.set(file.path, time / 1000);
+      }
+    } catch {
+      // Keep undated rows at the end when GitHub is unavailable.
+    } finally {
+      loadingUploadTimes = false;
+      if ($('sort').value.startsWith('upload-')) render();
+    }
+  }
+
   const allFiles = data.files.filter(f=>/\.(pdf|txt)$/i.test(f.path)).map(f=>({...f, remarks:f.remarks||''}));
   const files = catalogueRows(allFiles);
   const state = {folder:'all', page:1, filtered:[], matches:[], activeMatch:-1, matchRanges:new Map(), matchedRows:0, hasSearch:false};
@@ -387,6 +553,15 @@
     const result=($('filter-rows')?.checked ?? true) ? candidates.filter(file=>matching.has(file.path)) : candidates;
     const sort = $('sort').value;
     result.sort((a,b) => {
+      if (sort.startsWith('size-') || sort.startsWith('upload-')) {
+        const left = sort.startsWith('size-') ? (a.combinedSize ?? a.size) : rowUploadTime(a);
+        const right = sort.startsWith('size-') ? (b.combinedSize ?? b.size) : rowUploadTime(b);
+        if (left !== right) {
+          if (left == null) return 1;
+          if (right == null) return -1;
+          return sort.endsWith('-asc') ? left - right : right - left;
+        }
+      }
       if (sort === 'folder-asc') return collator.compare(a.folder,b.folder) || collator.compare(a.name,b.name);
       return (sort === 'name-desc' ? -1 : 1) * collator.compare(a.name,b.name) || collator.compare(a.path,b.path);
     });
@@ -610,7 +785,7 @@
   $('match-previous')?.addEventListener('click',()=>navigateMatch(-1));$('match-next')?.addEventListener('click',()=>navigateMatch(1));
   $('search').addEventListener('keydown',event=>{if(event.key!=='Enter' || event.isComposing)return;event.preventDefault();navigateMatch(event.shiftKey?-1:1);});
   $('reset-advanced').addEventListener('click',resetAdvanced);$('clear-all').addEventListener('click',resetAll);$('empty-reset').addEventListener('click',resetAll);
-  $('sort').addEventListener('change',()=>{state.page=1;render();});
+  $('sort').addEventListener('change',()=>{state.page=1;render();loadUploadTimes();});
   $('sort-folder').addEventListener('click',()=>{$('sort').value='folder-asc';state.page=1;render();});
   $('sort-name').addEventListener('click',()=>{$('sort').value=$('sort').value==='name-asc'?'name-desc':'name-asc';state.page=1;render();});
   $('page-size').addEventListener('change',()=>{state.page=1;render();});$('previous').addEventListener('click',()=>{if(state.page>1)state.page--;render();});$('next').addEventListener('click',()=>{state.page++;render();});
@@ -622,8 +797,8 @@
   fetch('https://api.github.com/repos/ShivaPrasadAcharya/nyayapustika/git/trees/main?recursive=1',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('refresh');return r.json();}).then(tree=>{
     if(tree.truncated)throw Error('incomplete listing');
     const existing=new Map(allFiles.map(f=>[f.path,f]));
-    const refreshed=tree.tree.filter(f=>f.type==='blob' && /\.(pdf|txt)$/i.test(f.path)).map(f=>existing.get(f.path)||{path:f.path,name:f.path.split('/').pop(),extension:f.path.split('.').pop().toLowerCase(),folder:/\.pdf$/i.test(f.path)?'pdf':'text',remarks:'',size:f.size});
-    allFiles.splice(0,allFiles.length,...refreshed);files.splice(0,files.length,...catalogueRows(allFiles));folderNavigation();render();
+    const refreshed=tree.tree.filter(f=>f.type==='blob' && /\.(pdf|txt)$/i.test(f.path)).map(f=>existing.has(f.path) ? {...existing.get(f.path),size:f.size} : {path:f.path,name:f.path.split('/').pop(),extension:f.path.split('.').pop().toLowerCase(),folder:/\.pdf$/i.test(f.path)?'pdf':'text',remarks:'',size:f.size});
+    allFiles.splice(0,allFiles.length,...refreshed);files.splice(0,files.length,...catalogueRows(allFiles));folderNavigation();render();loadUploadTimes();
   }).catch(()=>{ $('updated-at').textContent+=' · Saved catalogue shown; refresh later to check for new uploads.'; });
 })();
 
